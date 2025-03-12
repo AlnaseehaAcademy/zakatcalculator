@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زکوٰۃ کیلکولیٹر - النصیحہ اکیڈمی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <style>
+        /* عمومی اسٹائلز */
+        body {
+            font-family: 'Noto Nastaliq Urdu', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h2 {
+            font-size: 24px;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #e9f7ef;
+            border-radius: 5px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .feedback a {
+            color: #27ae60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .feedback a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .price-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-input input {
+            flex: 1;
+        }
+
+        /* موبائل کے لیے ریسپانسیو ڈیزائن */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            body {
+                font-size: 16px;
+            }
+        }
+
+        /* نئی تبدیلیاں */
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .language-switcher button {
+            width: auto;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .academy-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .assets-section {
+            background-color: #e9f7ef;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .liabilities-section {
+            background-color: #f9e9e9;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .whatsapp-button {
+            background-color: #25d366;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-buttons a {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-buttons a:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- اکیڈمی کا لوگو -->
+        <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="النصیحہ اکیڈمی" class="academy-logo">
+
+        <!-- ہیڈنگ -->
+        <h1 id="heading">زکوٰۃ کیلکولیٹر</h1>
+        <h2>رمضان 2025</h2>
+
+        <!-- زبان کی تبدیلی -->
+        <div class="language-switcher">
+            <button onclick="changeLanguage('ur')">اردو</button>
+            <button onclick="changeLanguage('hi')">हिंदी</button>
+            <button onclick="changeLanguage('en')">English</button>
+        </div>
+
+        <!-- زکوٰۃ کی اہمیت -->
+        <div class="intro section">
+            <h2 id="introHeading">زکوٰۃ کی اہمیت اور فضیلت</h2>
+            <p id="introText" class="intro-text">
+                زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔
+                آج دنیا میں غربت اور معاشی ناہمواری بڑھ رہی ہے، لیکن اگر ہر صاحبِ نصاب مسلمان ایمانداری سے زکوٰۃ ادا کرے تو کوئی بھوکا نہ سوئے۔ اللہ تعالیٰ فرماتے ہیں:
+                "خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا" (التوبہ: 103)
+                "ان کے مال میں سے صدقہ لے لو، جس کے ذریعے تم انہیں پاک اور صاف کرو اور ان کے لیے دعا کرو، بے شک تمہاری دعا ان کے لیے سکون کا باعث ہے۔"
+                دوسری طرف، زکوٰۃ نہ دینے والوں کے لیے سخت وعید ہے:
+                "وَالَّذِينَ يَكْنِزُونَ الذَّهَبَ وَالْفِضَّةَ وَلَا يُنفِقُونَهَا فِي سَبِيلِ اللَّهِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ" (التوبہ: 34)
+                "اور جو لوگ سونا اور چاندی جمع کرکے رکھتے ہیں اور اسے اللہ کی راہ میں خرچ نہیں کرتے، انہیں دردناک عذاب کی خوشخبری دے دو۔"
+                یہ وقت ہے کہ ہم زکوٰۃ کو بوجھ نہیں، بلکہ ایک سماجی اور روحانی سرمایہ کاری سمجھیں، تاکہ ہمارا معاشرہ زیادہ منصفانہ، مستحکم اور خوشحال بن سکے۔
+            </p>
+        </div>
+
+        <!-- موجودہ اثاثوں کی تفصیل -->
+        <div class="assets-section section">
+            <h2 id="assetsHeading">موجودہ اثاثوں کی تفصیل</h2>
+            <label for="goldValue" id="goldValueLabel">سونے کی مالیت</label>
+            <input type="text" id="goldValue" placeholder="آپ کے پاس موجود سونے کی مالیت درج کریں" min="0">
+
+            <label for="silverValue" id="silverValueLabel">چاندی کی مالیت</label>
+            <input type="text" id="silverValue" placeholder="آپ کے پاس موجود چاندی کی مالیت درج کریں" min="0">
+
+            <label for="cash" id="cashLabel">نقدی/کیش</label>
+            <input type="text" id="cash" placeholder="آپ کے پاس موجود نقدی کی مالیت درج کریں" min="0">
+
+            <label for="bankBalance" id="bankBalanceLabel">بینک بیلنس</label>
+            <input type="text" id="bankBalance" placeholder="آپ کے بینک بیلنس کی مالیت درج کریں" min="0">
+
+            <label for="loansGiven" id="loansGivenLabel">ادھار یا امانت دی گئی رقم</label>
+            <input type="text" id="loansGiven" placeholder="ادھار کی رقم درج کریں" min="0">
+
+            <label for="insurance" id="insuranceLabel">انشورنس پالیسی میں اصل جمع شدہ رقم</label>
+            <input type="text" id="insurance" placeholder="انشورنس کی رقم درج کریں" min="0">
+
+            <label for="foreignCurrency" id="foreignCurrencyLabel">غیر ملکی کرنسی</label>
+            <input type="text" id="foreignCurrency" placeholder="غیر ملکی کرنسی کی مالیت درج کریں" min="0">
+
+            <label for="tradeStock" id="tradeStockLabel">سامان تجارت/تیار مال کا اسٹاک</label>
+            <input type="text" id="tradeStock" placeholder="سامان تجارت کی مالیت درج کریں" min="0">
+
+            <label for="property" id="propertyLabel">بیچنے کی نیت سے خریدی گئی دکان/مکان/پلاٹ/گاڑی</label>
+            <input type="text" id="property" placeholder="جائیداد کی مالیت درج کریں" min="0">
+
+            <label for="rawMaterial" id="rawMaterialLabel">خام مال (Raw Material)</label>
+            <input type="text" id="rawMaterial" placeholder="خام مال کی مالیت درج کریں" min="0">
+
+            <label for="otherAssets" id="otherAssetsLabel">دیگر ضرورت سے زائد چیزوں کی مالیت</label>
+            <input type="text" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں" min="0">
+        </div>
+
+        <!-- واجب الادا قرضے اور اخراجات -->
+        <div class="liabilities-section section">
+            <h2 id="liabilitiesHeading">واجب الادا قرضے اور اخراجات</h2>
+            <label for="loansTaken" id="loansTakenLabel">قرضہ</label>
+            <input type="text" id="loansTaken" placeholder="قرضہ کی رقم درج کریں" min="0">
+
+            <label for="mehr" id="mehrLabel">بیوی کا غیر ادا شدہ مہر</label>
+            <input type="text" id="mehr" placeholder="مہر کی رقم درج کریں" min="0">
+
+            <label for="electricityBill" id="electricityBillLabel">بجلی کا واجب الادا بل</label>
+            <input type="text" id="electricityBill" placeholder="بجلی کا بل درج کریں" min="0">
+
+            <label for="gasBill" id="gasBillLabel">گیس کا واجب الادا بل</label>
+            <input type="text" id="gasBill" placeholder="گیس کا بل درج کریں" min="0">
+
+            <label for="waterBill" id="waterBillLabel">پانی کا واجب الادا بل</label>
+            <input type="text" id="waterBill" placeholder="پانی کا بل درج کریں" min="0">
+
+            <label for="phoneBill" id="phoneBillLabel">ٹیلی فون کا واجب الادا بل</label>
+            <input type="text" id="phoneBill" placeholder="ٹیلی فون کا بل درج کریں" min="0">
+
+            <label for="rentHouse" id="rentHouseLabel">مکان کا واجب الادا کرایہ</label>
+            <input type="text" id="rentHouse" placeholder="مکان کا کرایہ درج کریں" min="0">
+
+            <label for="rentShop" id="rentShopLabel">دکان کا واجب الادا کرایہ</label>
+            <input type="text" id="rentShop" placeholder="دکان کا کرایہ درج کریں" min="0">
+
+            <label for="rentWarehouse" id="rentWarehouseLabel">گودام کا واجب الادا کرایہ</label>
+            <input type="text" id="rentWarehouse" placeholder="گودام کا کرایہ درج کریں" min="0">
+
+            <label for="salaries" id="salariesLabel">ملازمین کی واجب الادا تنخواہیں</label>
+            <input type="text" id="salaries" placeholder="تنخواہیں درج کریں" min="0">
+
+            <label for="otherLiabilities" id="otherLiabilitiesLabel">دیگر واجب الادا اخراجات</label>
+            <input type="text" id="otherLiabilities" placeholder="دیگر اخراجات درج کریں" min="0">
+        </div>
+
+        <!-- حساب لگانے کا بٹن -->
+        <button type="button" onclick="calculateZakat()" id="calculateButton">زکوٰۃ کا حساب لگائیں</button>
+
+        <!-- نتیجہ -->
+        <div class="result" id="result"></div>
+
+        <!-- رابطہ کے بٹنز -->
+        <div class="feedback">
+            <p id="feedbackText">زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں</p>
+            <div class="contact-buttons">
+                <a href="tel:+919764878916">فون پر رابطہ کریں</a>
+                <a href="https://wa.me/919764878916" target="_blank">واٹس ایپ پر رابطہ کریں</a>
+            </div>
+        </div>
+
+        <!-- شائع کردہ -->
+        <div class="footer">
+            <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="النصیحہ اکیڈمی" class="footer-logo">
+        </div>
+    </div>
+
+    <script>
+        // ترجمہ ڈیٹا
+        const translations = {
+            ur: {
+                heading: "زکوٰۃ کیلکولیٹر",
+                pricesHeading: "💰 سونے اور چاندی کی قیمتیں",
+                goldPriceLabel: "سونے کی قیمت (فی گرام)",
+                silverPriceLabel: "چاندی کی قیمت (فی گرام)",
+                assetsHeading: "💼 موجودہ اثاثوں کی تفصیل",
+                goldValueLabel: "سونے کی مالیت",
+                silverValueLabel: "چاندی کی مالیت",
+                cashLabel: "نقدی/کیش",
+                bankBalanceLabel: "بینک بیلنس",
+                loansGivenLabel: "ادھار یا امانت دی گئی رقم",
+                insuranceLabel: "انشورنس پالیسی میں اصل جمع شدہ رقم",
+                foreignCurrencyLabel: "غیر ملکی کرنسی",
+                tradeStockLabel: "سامان تجارت/تیار مال کا اسٹاک",
+                propertyLabel: "بیچنے کی نیت سے خریدی گئی دکان/مکان/پلاٹ/گاڑی",
+                rawMaterialLabel: "خام مال (Raw Material)",
+                otherAssetsLabel: "دیگر ضرورت سے زائد چیزوں کی مالیت",
+                liabilitiesHeading: "💸 واجب الادا قرضے اور اخراجات",
+                loansTakenLabel: "قرضہ",
+                mehrLabel: "بیوی کا غیر ادا شدہ مہر",
+                electricityBillLabel: "بجلی کا واجب الادا بل",
+                gasBillLabel: "گیس کا واجب الادا بل",
+                waterBillLabel: "پانی کا واجب الادا بل",
+                phoneBillLabel: "ٹیلی فون کا واجب الادا بل",
+                rentHouseLabel: "مکان کا واجب الادا کرایہ",
+                rentShopLabel: "دکان کا واجب الادا کرایہ",
+                rentWarehouseLabel: "گودام کا واجب الادا کرایہ",
+                salariesLabel: "ملازمین کی واجب الادا تنخواہیں",
+                otherLiabilitiesLabel: "دیگر واجب الادا اخراجات",
+                calculateButton: "زکوٰۃ کا حساب لگائیں",
+                feedbackText: "زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں",
+                footerText: "شائع کردہ: النصیحہ اکیڈمی",
+                introHeading: "زکوٰۃ کی اہمیت اور فضیلت",
+                introText: "زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔ آج دنیا میں غربت اور معاشی ناہمواری بڑھ رہی ہے، لیکن اگر ہر صاحبِ نصاب مسلمان ایمانداری سے زکوٰۃ ادا کرے تو کوئی بھوکا نہ سوئے۔ اللہ تعالیٰ فرماتے ہیں: \"خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا\" (التوبہ: 103) \"ان کے مال میں سے صدقہ لے لو، جس کے ذریعے تم انہیں پاک اور صاف کرو اور ان کے لیے دعا کرو، بے شک تمہاری دعا ان کے لیے سکون کا باعث ہے۔\" دوسری طرف، زکوٰۃ نہ دینے والوں کے لیے سخت وعید ہے: \"وَالَّذِينَ يَكْنِزُونَ الذَّهَبَ وَالْفِضَّةَ وَلَا يُنفِقُونَهَا فِي سَبِيلِ اللَّهِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ\" (التوبہ: 34) \"اور جو لوگ سونا اور چاندی جمع کرکے رکھتے ہیں اور اسے اللہ کی راہ میں خرچ نہیں کرتے، انہیں دردناک عذاب کی خوشخبری دے دو۔\" یہ وقت ہے کہ ہم زکوٰۃ کو بوجھ نہیں، بلکہ ایک سماجی اور روحانی سرمایہ کاری سمجھیں، تاکہ ہمارا معاشرہ زیادہ منصفانہ، مستحکم اور خوشحال بن سکے۔",
+            },
+            hi: {
+                heading: "ज़कात कैलकुलेटर",
+                pricesHeading: "💰 सोने और चांदी की कीमतें",
+                goldPriceLabel: "सोने की कीमत (प्रति ग्राम)",
+                silverPriceLabel: "चांदी की कीमत (प्रति ग्राम)",
+                assetsHeading: "💼 मौजूदा संपत्ति की जानकारी",
+                goldValueLabel: "सोने की कीमत",
+                silverValueLabel: "चांदी की कीमत",
+                cashLabel: "नकद/कैश",
+                bankBalanceLabel: "बैंक बैलेंस",
+                loansGivenLabel: "उधार या अमानत राशि",
+                insuranceLabel: "बीमा पॉलिसी में जमा राशि",
+                foreignCurrencyLabel: "विदेशी मुद्रा",
+                tradeStockLabel: "व्यापार स्टॉक/तैयार माल",
+                propertyLabel: "दुकान/मकान/प्लॉट/गाड़ी",
+                rawMaterialLabel: "कच्चा माल (Raw Material)",
+                otherAssetsLabel: "अन्य संपत्ति",
+                liabilitiesHeading: "💸 देय ऋण और खर्च",
+                loansTakenLabel: "कर्ज",
+                mehrLabel: "पत्नी का बकाया मेहर",
+                electricityBillLabel: "बिजली का बिल",
+                gasBillLabel: "गैस का बिल",
+                waterBillLabel: "पानी का बिल",
+                phoneBillLabel: "फोन का बिल",
+                rentHouseLabel: "मकान का किराया",
+                rentShopLabel: "दुकान का किराया",
+                rentWarehouseLabel: "गोदाम का किराया",
+                salariesLabel: "कर्मचारियों का वेतन",
+                otherLiabilitiesLabel: "अन्य खर्च",
+                calculateButton: "ज़कात की गणना करें",
+                feedbackText: "ज़कात या मसारिफ़ ज़कात के बारे में अधिक जानकारी के लिए संपर्क करें",
+                footerText: "प्रकाशक: अन-नसीहा अकादमी",
+                introHeading: "ज़कात का महत्व और फ़ज़ीलत",
+                introText: "ज़कात इस्लाम का एक ऐसा वित्तीय प्रणाली है जो धन की न्यायपूर्ण वितरण और सामाजिक न्याय को सुनिश्चित करता है। कुरान में 32 बार इसका उल्लेख हुआ है, जो इसकी असाधारण महत्व को दर्शाता है। ज़कात का उद्देश्य केवल गरीबों की मदद करना नहीं है, बल्कि अर्थव्यवस्था में संतुलन बनाना और धन के प्रवाह को बनाए रखना है। आज दुनिया में गरीबी और आर्थिक असमानता बढ़ रही है, लेकिन अगर हर साहिब-ए-निसाब मुसलमान ईमानदारी से ज़कात अदा करे तो कोई भी भूखा नहीं सोएगा। अल्लाह तआला फरमाते हैं: \"ख़ुज़ मिन अम्वालिहिम सदक़तन तुताह्हिरुहुम व तुज़क्कीहिम बिहा\" (अत-तौबा: 103) \"उनके धन में से सदक़ा ले लो, जिसके द्वारा तुम उन्हें पाक और पवित्र करो और उनके लिए दुआ करो, निस्संदेह तुम्हारी दुआ उनके लिए सुकून का कारण है।\" दूसरी ओर, ज़कात न देने वालों के लिए सख्त चेतावनी है: \"वल्लज़ीना यक्निज़ून अज़-ज़हब व अल-फ़िद्दा व ला युन्फ़िक़ूनहा फी सबीलिल्लाह फ बश्शिरहुम बि अज़ाबिन अलीम\" (अत-तौबा: 34) \"और जो लोग सोना और चांदी जमा करके रखते हैं और उसे अल्लाह की राह में खर्च नहीं करते, उन्हें दर्दनाक अज़ाब की खुशखबरी सुना दो।\" यह समय है कि हम ज़कात को बोझ न समझें, बल्कि एक सामाजिक और आध्यात्मिक निवेश समझें, ताकि हमारा समाज अधिक न्यायपूर्ण, स्थिर और समृद्ध बन सके।",
+            },
+            en: {
+                heading: "Zakat Calculator",
+                pricesHeading: "💰 Gold and Silver Prices",
+                goldPriceLabel: "Gold Price (per gram)",
+                silverPriceLabel: "Silver Price (per gram)",
+                assetsHeading: "💼 Current Assets Details",
+                goldValueLabel: "Gold Value",
+                silverValueLabel: "Silver Value",
+                cashLabel: "Cash",
+                bankBalanceLabel: "Bank Balance",
+                loansGivenLabel: "Loans Given",
+                insuranceLabel: "Insurance Policy Value",
+                foreignCurrencyLabel: "Foreign Currency",
+                tradeStockLabel: "Trade Stock",
+                propertyLabel: "Property (Shop/House/Plot/Car)",
+                rawMaterialLabel: "Raw Material",
+                otherAssetsLabel: "Other Assets",
+                liabilitiesHeading: "💸 Liabilities and Expenses",
+                loansTakenLabel: "Loans Taken",
+                mehrLabel: "Outstanding Mehr",
+                electricityBillLabel: "Electricity Bill",
+                gasBillLabel: "Gas Bill",
+                waterBillLabel: "Water Bill",
+                phoneBillLabel: "Phone Bill",
+                rentHouseLabel: "House Rent",
+                rentShopLabel: "Shop Rent",
+                rentWarehouseLabel: "Warehouse Rent",
+                salariesLabel: "Employee Salaries",
+                otherLiabilitiesLabel: "Other Expenses",
+                calculateButton: "Calculate Zakat",
+                feedbackText: "For more information about Zakat or its distribution, contact us",
+                footerText: "Published by: An-Naseeha Academy",
+                introHeading: "Importance and Virtue of Zakat",
+                introText: "Zakat is a financial system in Islam that ensures the equitable distribution of wealth and social justice. It is mentioned 32 times in the Quran, highlighting its extraordinary importance. The purpose of Zakat is not only to help the poor but also to create balance in the economy and maintain the circulation of wealth. Today, poverty and economic inequality are increasing worldwide, but if every eligible Muslim pays Zakat honestly, no one will sleep hungry. Allah says: \"Take from their wealth a charity to purify and sanctify them and pray for them; indeed, your prayer is a source of comfort for them.\" (At-Tawbah: 103) On the other hand, there is a severe warning for those who do not pay Zakat: \"And those who hoard gold and silver and do not spend it in the way of Allah, give them tidings of a painful punishment.\" (At-Tawbah: 34) It is time that we consider Zakat not as a burden but as a social and spiritual investment, so that our society can become more just, stable, and prosperous.",
+            },
+        };
+
+        // زبان تبدیل کرنے کا فنکشن
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll("[id]");
+            elements.forEach((element) => {
+                if (translations[lang] && translations[lang][element.id]) {
+                    element.innerHTML = translations[lang][element.id];
+                }
+            });
+        }
+
+        // زکوٰۃ کا حساب لگانے کا فنکشن
+        function calculateZakat() {
+            try {
+                // زکوٰۃ واجب الادا اموال
+                const goldValue = parseFloat(document.getElementById('goldValue').value) || 0;
+                const silverValue = parseFloat(document.getElementById('silverValue').value) || 0;
+                const cash = parseFloat(document.getElementById('cash').value) || 0;
+                const bankBalance = parseFloat(document.getElementById('bankBalance').value) || 0;
+                const loansGiven = parseFloat(document.getElementById('loansGiven').value) || 0;
+                const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+                const foreignCurrency = parseFloat(document.getElementById('foreignCurrency').value) || 0;
+                const tradeStock = parseFloat(document.getElementById('tradeStock').value) || 0;
+                const property = parseFloat(document.getElementById('property').value) || 0;
+                const rawMaterial = parseFloat(document.getElementById('rawMaterial').value) || 0;
+                const otherAssets = parseFloat(document.getElementById('otherAssets').value) || 0;
+
+                // واجب الادا قرضے اور اخراجات
+                const loansTaken = parseFloat(document.getElementById('loansTaken').value) || 0;
+                const mehr = parseFloat(document.getElementById('mehr').value) || 0;
+                const electricityBill = parseFloat(document.getElementById('electricityBill').value) || 0;
+                const gasBill = parseFloat(document.getElementById('gasBill').value) || 0;
+                const waterBill = parseFloat(document.getElementById('waterBill').value) || 0;
+                const phoneBill = parseFloat(document.getElementById('phoneBill').value) || 0;
+                const rentHouse = parseFloat(document.getElementById('rentHouse').value) || 0;
+                const rentShop = parseFloat(document.getElementById('rentShop').value) || 0;
+                const rentWarehouse = parseFloat(document.getElementById('rentWarehouse').value) || 0;
+                const salaries = parseFloat(document.getElementById('salaries').value) || 0;
+                const otherLiabilities = parseFloat(document.getElementById('otherLiabilities').value) || 0;
+
+                // کل اموال
+                const totalAssets = goldValue + silverValue + cash + bankBalance + loansGiven + insurance + foreignCurrency + tradeStock + property + rawMaterial + otherAssets;
+
+                // کل قرضے اور اخراجات
+                const totalLiabilities = loansTaken + mehr + electricityBill + gasBill + waterBill + phoneBill + rentHouse + rentShop + rentWarehouse + salaries + otherLiabilities;
+
+                // زکوٰۃ کے لیے قابل ادائیگی رقم
+                const netAmount = totalAssets - totalLiabilities;
+
+                // نصاب کی جانچ
+                const nisab = 61000; // نصاب کی رقم
+
+                if (netAmount >= nisab) {
+                    const zakat = (netAmount * 2.5) / 100;
+                    document.getElementById('result').innerText = `آپ پر زکوٰۃ واجب الادا ہے: ${zakat.toFixed(2)} روپے`;
+                } else {
+                    document.getElementById('result').innerText = 'آپ صاحب نصاب نہیں ہیں، لہذا آپ پر زکوٰۃ واجب نہیں ہے۔';
+                }
+            } catch (error) {
+                document.getElementById('result').innerText = 'غلطی: کوئی مسئلہ پیش آیا ہے۔';
+            }
+        }
+
+        // ڈیفالٹ زبان
+        changeLanguage('ur');
+    </script>
+</body>
+</html>

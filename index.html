@@ -101,17 +101,21 @@
             background-color: #219150;
         }
 
-        /* موبائل کے لیے ریسپانسیو ڈیزائن */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 24px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            body {
-                font-size: 16px;
-            }
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .language-switcher button {
+            width: auto;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -121,13 +125,19 @@
         <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="النصیحہ اکیڈمی" style="width: 100px; height: auto; margin-bottom: 10px;">
 
         <!-- ہیڈنگ -->
-        <h1>زکوٰۃ کیلکولیٹر</h1>
-        <h2>رمضان 2025</h2>
+        <h1 id="heading">زکوٰۃ کیلکولیٹر</h1>
+        <h2 id="subHeading">رمضان 2025</h2>
+
+        <!-- زبان کی تبدیلی -->
+        <div class="language-switcher">
+            <button onclick="changeLanguage('ur')">اردو</button>
+            <button onclick="changeLanguage('en')">English</button>
+        </div>
 
         <!-- زکوٰۃ کی اہمیت -->
         <div class="intro">
-            <h2>زکوٰۃ کی اہمیت اور فضیلت</h2>
-            <p style="text-align: justify; line-height: 1.6;">
+            <h2 id="introHeading">زکوٰۃ کی اہمیت اور فضیلت</h2>
+            <p id="introText" style="text-align: justify; line-height: 1.6;">
                 زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔
                 آج دنیا میں غربت اور معاشی ناہمواری بڑھ رہی ہے، لیکن اگر ہر صاحبِ نصاب مسلمان ایمانداری سے زکوٰۃ ادا کرے تو کوئی بھوکا نہ سوئے۔ اللہ تعالیٰ فرماتے ہیں:
                 "خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا" (التوبہ: 103)
@@ -140,8 +150,8 @@
         </div>
 
         <!-- موجودہ اثاثوں کی تفصیل -->
-        <div class="assets">
-            <h2>موجودہ اثاثوں کی تفصیل</h2>
+        <div id="assetsSection">
+            <h2 id="assetsHeading">موجودہ اثاثوں کی تفصیل</h2>
             <label for="goldValue">سونے کی مالیت</label>
             <input type="text" id="goldValue" placeholder="سونے کی مالیت درج کریں">
 
@@ -174,11 +184,13 @@
 
             <label for="otherAssets">دیگر ضرورت سے زائد چیزوں کی مالیت</label>
             <input type="text" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں">
+
+            <button onclick="showLiabilitiesSection()">Next</button>
         </div>
 
         <!-- واجب الادا قرضے اور اخراجات -->
-        <div class="liabilities">
-            <h2>واجب الادا قرضے اور اخراجات</h2>
+        <div id="liabilitiesSection" class="hidden">
+            <h2 id="liabilitiesHeading">واجب الادا قرضے اور اخراجات</h2>
             <label for="loansTaken">قرضہ</label>
             <input type="text" id="loansTaken" placeholder="قرضہ کی رقم درج کریں">
 
@@ -211,17 +223,16 @@
 
             <label for="otherLiabilities">دیگر واجب الادا اخراجات</label>
             <input type="text" id="otherLiabilities" placeholder="دیگر اخراجات درج کریں">
+
+            <button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
         </div>
 
-        <!-- حساب لگانے کا بٹن -->
-        <button type="button" onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
-
         <!-- نتیجہ -->
-        <div class="result" id="result"></div>
+        <div class="result hidden" id="result"></div>
 
         <!-- رابطہ کے بٹنز -->
         <div class="feedback">
-            <p>زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں</p>
+            <p id="feedbackText">زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں</p>
             <div class="contact-buttons">
                 <a href="tel:+919764878916">فون پر رابطہ کریں</a>
                 <a href="https://wa.me/919764878916" target="_blank">واٹس ایپ پر رابطہ کریں</a>
@@ -235,6 +246,44 @@
     </div>
 
     <script>
+        // ترجمہ ڈیٹا
+        const translations = {
+            ur: {
+                heading: "زکوٰۃ کیلکولیٹر",
+                subHeading: "رمضان 2025",
+                introHeading: "زکوٰۃ کی اہمیت اور فضیلت",
+                introText: "زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔ آج دنیا میں غربت اور معاشی ناہمواری بڑھ رہی ہے، لیکن اگر ہر صاحبِ نصاب مسلمان ایمانداری سے زکوٰۃ ادا کرے تو کوئی بھوکا نہ سوئے۔ اللہ تعالیٰ فرماتے ہیں: \"خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا\" (التوبہ: 103) \"ان کے مال میں سے صدقہ لے لو، جس کے ذریعے تم انہیں پاک اور صاف کرو اور ان کے لیے دعا کرو، بے شک تمہاری دعا ان کے لیے سکون کا باعث ہے۔\" دوسری طرف، زکوٰۃ نہ دینے والوں کے لیے سخت وعید ہے: \"وَالَّذِينَ يَكْنِزُونَ الذَّهَبَ وَالْفِضَّةَ وَلَا يُنفِقُونَهَا فِي سَبِيلِ اللَّهِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ\" (التوبہ: 34) \"اور جو لوگ سونا اور چاندی جمع کرکے رکھتے ہیں اور اسے اللہ کی راہ میں خرچ نہیں کرتے، انہیں دردناک عذاب کی خوشخبری دے دو۔\" یہ وقت ہے کہ ہم زکوٰۃ کو بوجھ نہیں، بلکہ ایک سماجی اور روحانی سرمایہ کاری سمجھیں، تاکہ ہمارا معاشرہ زیادہ منصفانہ، مستحکم اور خوشحال بن سکے۔",
+                assetsHeading: "موجودہ اثاثوں کی تفصیل",
+                liabilitiesHeading: "واجب الادا قرضے اور اخراجات",
+                feedbackText: "زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں",
+            },
+            en: {
+                heading: "Zakat Calculator",
+                subHeading: "Ramadan 2025",
+                introHeading: "Importance and Virtue of Zakat",
+                introText: "Zakat is a financial system in Islam that ensures the equitable distribution of wealth and social justice. It is mentioned 32 times in the Quran, highlighting its extraordinary importance. The purpose of Zakat is not only to help the poor but also to create balance in the economy and maintain the circulation of wealth. Today, poverty and economic inequality are increasing worldwide, but if every eligible Muslim pays Zakat honestly, no one will sleep hungry. Allah says: \"Take from their wealth a charity to purify and sanctify them and pray for them; indeed, your prayer is a source of comfort for them.\" (At-Tawbah: 103) On the other hand, there is a severe warning for those who do not pay Zakat: \"And those who hoard gold and silver and do not spend it in the way of Allah, give them tidings of a painful punishment.\" (At-Tawbah: 34) It is time that we consider Zakat not as a burden but as a social and spiritual investment, so that our society can become more just, stable, and prosperous.",
+                assetsHeading: "Current Assets Details",
+                liabilitiesHeading: "Liabilities and Expenses",
+                feedbackText: "For more information about Zakat or its distribution, contact us",
+            },
+        };
+
+        // زبان تبدیل کرنے کا فنکشن
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll("[id]");
+            elements.forEach((element) => {
+                if (translations[lang] && translations[lang][element.id]) {
+                    element.innerHTML = translations[lang][element.id];
+                }
+            });
+        }
+
+        // اثاثے والے سیکشن کو چھپائیں اور قرضے والے سیکشن کو ظاہر کریں
+        function showLiabilitiesSection() {
+            document.getElementById('assetsSection').classList.add('hidden');
+            document.getElementById('liabilitiesSection').classList.remove('hidden');
+        }
+
         // زکوٰۃ کا حساب لگانے کا فنکشن
         function calculateZakat() {
             try {
@@ -268,10 +317,17 @@
                 } else {
                     document.getElementById('result').innerText = 'آپ صاحب نصاب نہیں ہیں، لہذا آپ پر زکوٰۃ واجب نہیں ہے۔';
                 }
+
+                // تمام سیکشنز چھپائیں اور صرف نتیجہ ظاہر کریں
+                document.getElementById('liabilitiesSection').classList.add('hidden');
+                document.getElementById('result').classList.remove('hidden');
             } catch (error) {
                 document.getElementById('result').innerText = 'غلطی: کوئی مسئلہ پیش آیا ہے۔';
             }
         }
+
+        // ڈیفالٹ زبان
+        changeLanguage('ur');
     </script>
 </body>
 </html>

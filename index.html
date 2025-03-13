@@ -170,17 +170,14 @@
             <label for="insurance">انشورنس پالیسی میں اصل جمع شدہ رقم</label>
             <input type="number" id="insurance" placeholder="انشورنس کی رقم درج کریں" min="0">
 
-            <label for="foreignCurrency">غیر ملکی کرنسی</label>
-            <input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی کی مالیت درج کریں" min="0">
+            <label for="foreignCurrency">غیر ملکی کرنسی / شیئرز</label>
+            <input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی / شیئرز کی مالیت درج کریں" min="0">
 
-            <label for="tradeStock">سامان تجارت/تیار مال کا اسٹاک</label>
-            <input type="number" id="tradeStock" placeholder="سامان تجارت کی مالیت درج کریں" min="0">
+            <label for="tradeStock">سامان تجارت/ خام مال</label>
+            <input type="number" id="tradeStock" placeholder="سامان تجارت/ خام مال کی مالیت درج کریں" min="0">
 
             <label for="property">بیچنے کی نیت سے خریدی گئی دکان/مکان/پلاٹ/گاڑی</label>
             <input type="number" id="property" placeholder="جائیداد کی مالیت درج کریں" min="0">
-
-            <label for="rawMaterial">خام مال (Raw Material)</label>
-            <input type="number" id="rawMaterial" placeholder="خام مال کی مالیت درج کریں" min="0">
 
             <label for="otherAssets">دیگر ضرورت سے زائد چیزوں کی مالیت</label>
             <input type="number" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں" min="0">
@@ -298,7 +295,7 @@
                 // زکوٰۃ واجب الادا اموال
                 const assets = [
                     'goldValue', 'silverValue', 'cash', 'bankBalance', 'loansGiven',
-                    'insurance', 'foreignCurrency', 'tradeStock', 'property', 'rawMaterial', 'otherAssets'
+                    'insurance', 'foreignCurrency', 'tradeStock', 'property', 'otherAssets'
                 ];
 
                 // واجب الادا قرضے اور اخراجات
@@ -308,10 +305,10 @@
                 ];
 
                 // کل اموال
-                const totalAssets = assets.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0, 0);
+                const totalAssets = assets.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
 
                 // کل قرضے اور اخراجات
-                const totalLiabilities = liabilities.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0, 0);
+                const totalLiabilities = liabilities.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
 
                 // زکوٰۃ کے لیے قابل ادائیگی رقم
                 const netAmount = totalAssets - totalLiabilities;

@@ -135,7 +135,7 @@
         </div>
 
         <!-- زکوٰۃ کی اہمیت -->
-        <div class="intro">
+        <div id="introSection">
             <h2 id="introHeading">زکوٰۃ کی اہمیت اور فضیلت</h2>
             <p id="introText" style="text-align: justify; line-height: 1.6;">
                 زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔
@@ -153,37 +153,37 @@
         <div id="assetsSection">
             <h2 id="assetsHeading">موجودہ اثاثوں کی تفصیل</h2>
             <label for="goldValue">سونے کی مالیت</label>
-            <input type="text" id="goldValue" placeholder="سونے کی مالیت درج کریں">
+            <input type="number" id="goldValue" placeholder="سونے کی مالیت درج کریں" min="0">
 
             <label for="silverValue">چاندی کی مالیت</label>
-            <input type="text" id="silverValue" placeholder="چاندی کی مالیت درج کریں">
+            <input type="number" id="silverValue" placeholder="چاندی کی مالیت درج کریں" min="0">
 
             <label for="cash">نقدی/کیش</label>
-            <input type="text" id="cash" placeholder="نقدی کی مالیت درج کریں">
+            <input type="number" id="cash" placeholder="نقدی کی مالیت درج کریں" min="0">
 
             <label for="bankBalance">بینک بیلنس</label>
-            <input type="text" id="bankBalance" placeholder="بینک بیلنس درج کریں">
+            <input type="number" id="bankBalance" placeholder="بینک بیلنس درج کریں" min="0">
 
             <label for="loansGiven">ادھار یا امانت دی گئی رقم</label>
-            <input type="text" id="loansGiven" placeholder="ادھار کی رقم درج کریں">
+            <input type="number" id="loansGiven" placeholder="ادھار کی رقم درج کریں" min="0">
 
             <label for="insurance">انشورنس پالیسی میں اصل جمع شدہ رقم</label>
-            <input type="text" id="insurance" placeholder="انشورنس کی رقم درج کریں">
+            <input type="number" id="insurance" placeholder="انشورنس کی رقم درج کریں" min="0">
 
             <label for="foreignCurrency">غیر ملکی کرنسی</label>
-            <input type="text" id="foreignCurrency" placeholder="غیر ملکی کرنسی کی مالیت درج کریں">
+            <input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی کی مالیت درج کریں" min="0">
 
             <label for="tradeStock">سامان تجارت/تیار مال کا اسٹاک</label>
-            <input type="text" id="tradeStock" placeholder="سامان تجارت کی مالیت درج کریں">
+            <input type="number" id="tradeStock" placeholder="سامان تجارت کی مالیت درج کریں" min="0">
 
             <label for="property">بیچنے کی نیت سے خریدی گئی دکان/مکان/پلاٹ/گاڑی</label>
-            <input type="text" id="property" placeholder="جائیداد کی مالیت درج کریں">
+            <input type="number" id="property" placeholder="جائیداد کی مالیت درج کریں" min="0">
 
             <label for="rawMaterial">خام مال (Raw Material)</label>
-            <input type="text" id="rawMaterial" placeholder="خام مال کی مالیت درج کریں">
+            <input type="number" id="rawMaterial" placeholder="خام مال کی مالیت درج کریں" min="0">
 
             <label for="otherAssets">دیگر ضرورت سے زائد چیزوں کی مالیت</label>
-            <input type="text" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں">
+            <input type="number" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں" min="0">
 
             <button onclick="showLiabilitiesSection()">Next</button>
         </div>
@@ -192,37 +192,37 @@
         <div id="liabilitiesSection" class="hidden">
             <h2 id="liabilitiesHeading">واجب الادا قرضے اور اخراجات</h2>
             <label for="loansTaken">قرضہ</label>
-            <input type="text" id="loansTaken" placeholder="قرضہ کی رقم درج کریں">
+            <input type="number" id="loansTaken" placeholder="قرضہ کی رقم درج کریں" min="0">
 
             <label for="mehr">بیوی کا غیر ادا شدہ مہر</label>
-            <input type="text" id="mehr" placeholder="مہر کی رقم درج کریں">
+            <input type="number" id="mehr" placeholder="مہر کی رقم درج کریں" min="0">
 
             <label for="electricityBill">بجلی کا واجب الادا بل</label>
-            <input type="text" id="electricityBill" placeholder="بجلی کا بل درج کریں">
+            <input type="number" id="electricityBill" placeholder="بجلی کا بل درج کریں" min="0">
 
             <label for="gasBill">گیس کا واجب الادا بل</label>
-            <input type="text" id="gasBill" placeholder="گیس کا بل درج کریں">
+            <input type="number" id="gasBill" placeholder="گیس کا بل درج کریں" min="0">
 
             <label for="waterBill">پانی کا واجب الادا بل</label>
-            <input type="text" id="waterBill" placeholder="پانی کا بل درج کریں">
+            <input type="number" id="waterBill" placeholder="پانی کا بل درج کریں" min="0">
 
             <label for="phoneBill">ٹیلی فون کا واجب الادا بل</label>
-            <input type="text" id="phoneBill" placeholder="ٹیلی فون کا بل درج کریں">
+            <input type="number" id="phoneBill" placeholder="ٹیلی فون کا بل درج کریں" min="0">
 
             <label for="rentHouse">مکان کا واجب الادا کرایہ</label>
-            <input type="text" id="rentHouse" placeholder="مکان کا کرایہ درج کریں">
+            <input type="number" id="rentHouse" placeholder="مکان کا کرایہ درج کریں" min="0">
 
             <label for="rentShop">دکان کا واجب الادا کرایہ</label>
-            <input type="text" id="rentShop" placeholder="دکان کا کرایہ درج کریں">
+            <input type="number" id="rentShop" placeholder="دکان کا کرایہ درج کریں" min="0">
 
             <label for="rentWarehouse">گودام کا واجب الادا کرایہ</label>
-            <input type="text" id="rentWarehouse" placeholder="گودام کا کرایہ درج کریں">
+            <input type="number" id="rentWarehouse" placeholder="گودام کا کرایہ درج کریں" min="0">
 
             <label for="salaries">ملازمین کی واجب الادا تنخواہیں</label>
-            <input type="text" id="salaries" placeholder="تنخواہیں درج کریں">
+            <input type="number" id="salaries" placeholder="تنخواہیں درج کریں" min="0">
 
             <label for="otherLiabilities">دیگر واجب الادا اخراجات</label>
-            <input type="text" id="otherLiabilities" placeholder="دیگر اخراجات درج کریں">
+            <input type="number" id="otherLiabilities" placeholder="دیگر اخراجات درج کریں" min="0">
 
             <button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
         </div>
@@ -231,7 +231,7 @@
         <div class="result hidden" id="result"></div>
 
         <!-- رابطہ کے بٹنز -->
-        <div class="feedback">
+        <div class="feedback hidden" id="feedbackSection">
             <p id="feedbackText">زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں</p>
             <div class="contact-buttons">
                 <a href="tel:+919764878916">فون پر رابطہ کریں</a>
@@ -280,8 +280,16 @@
 
         // اثاثے والے سیکشن کو چھپائیں اور قرضے والے سیکشن کو ظاہر کریں
         function showLiabilitiesSection() {
+            document.getElementById('introSection').classList.add('hidden');
             document.getElementById('assetsSection').classList.add('hidden');
             document.getElementById('liabilitiesSection').classList.remove('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+
+            // اسکرین کو اوپر لے جائیں
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // پہلی ان پٹ فیلڈ پر فوکس کریں
+            document.getElementById('loansTaken').focus();
         }
 
         // زکوٰۃ کا حساب لگانے کا فنکشن
@@ -300,10 +308,10 @@
                 ];
 
                 // کل اموال
-                const totalAssets = assets.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
+                const totalAssets = assets.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0, 0);
 
                 // کل قرضے اور اخراجات
-                const totalLiabilities = liabilities.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0), 0);
+                const totalLiabilities = liabilities.reduce((sum, id) => sum + (parseFloat(document.getElementById(id).value) || 0, 0);
 
                 // زکوٰۃ کے لیے قابل ادائیگی رقم
                 const netAmount = totalAssets - totalLiabilities;
@@ -321,6 +329,7 @@
                 // تمام سیکشنز چھپائیں اور صرف نتیجہ ظاہر کریں
                 document.getElementById('liabilitiesSection').classList.add('hidden');
                 document.getElementById('result').classList.remove('hidden');
+                document.getElementById('feedbackSection').classList.remove('hidden');
             } catch (error) {
                 document.getElementById('result').innerText = 'غلطی: کوئی مسئلہ پیش آیا ہے۔';
             }

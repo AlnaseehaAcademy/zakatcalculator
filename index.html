@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زکوٰۃ کیلکولیٹر - النصیحہ اکیڈمی</title>
+    <title>Zakat Calculator - Al-Naseeha Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
     <style>
         /* عمومی اسٹائلز */
@@ -117,16 +117,20 @@
         .hidden {
             display: none;
         }
+
+        .back-button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- اکیڈمی کا لوگو -->
-        <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="النصیحہ اکیڈمی" style="width: 100px; height: auto; margin-bottom: 10px;">
+        <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="Al-Naseeha Academy" style="width: 100px; height: auto; margin-bottom: 10px;">
 
         <!-- ہیڈنگ -->
-        <h1 id="heading">زکوٰۃ کیلکولیٹر</h1>
-        <h2 id="subHeading">رمضان 2025</h2>
+        <h1 id="heading">Zakat Calculator</h1>
+        <h2 id="subHeading">Ramadan 2025</h2>
 
         <!-- زبان کی تبدیلی -->
         <div class="language-switcher">
@@ -136,92 +140,85 @@
 
         <!-- زکوٰۃ کی اہمیت -->
         <div id="introSection">
-            <h2 id="introHeading">زکوٰۃ کی اہمیت اور فضیلت</h2>
+            <h2 id="introHeading">Importance and Virtue of Zakat</h2>
             <p id="introText" style="text-align: justify; line-height: 1.6;">
-                زکوٰۃ اسلام کا ایک ایسا مالی نظام ہے جو دولت کی منصفانہ تقسیم اور سماجی انصاف کو یقینی بناتا ہے۔ قرآن میں 32 مرتبہ اس کا ذکر آیا، جو اس کی غیر معمولی اہمیت کو ظاہر کرتا ہے۔ زکوٰۃ کا مقصد صرف غریبوں کی مدد نہیں بلکہ معیشت میں توازن پیدا کرنا اور دولت کی گردش کو برقرار رکھنا ہے۔
-                آج دنیا میں غربت اور معاشی ناہمواری بڑھ رہی ہے، لیکن اگر ہر صاحبِ نصاب مسلمان ایمانداری سے زکوٰۃ ادا کرے تو کوئی بھوکا نہ سوئے۔ اللہ تعالیٰ فرماتے ہیں:
-                "خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا" (التوبہ: 103)
-                "ان کے مال میں سے صدقہ لے لو، جس کے ذریعے تم انہیں پاک اور صاف کرو اور ان کے لیے دعا کرو، بے شک تمہاری دعا ان کے لیے سکون کا باعث ہے۔"
-                دوسری طرف، زکوٰۃ نہ دینے والوں کے لیے سخت وعید ہے:
-                "وَالَّذِينَ يَكْنِزُونَ الذَّهَبَ وَالْفِضَّةَ وَلَا يُنفِقُونَهَا فِي سَبِيلِ اللَّهِ فَبَشِّرْهُم بِعَذَابٍ أَلِيمٍ" (التوبہ: 34)
-                "اور جو لوگ سونا اور چاندی جمع کرکے رکھتے ہیں اور اسے اللہ کی راہ میں خرچ نہیں کرتے، انہیں دردناک عذاب کی خوشخبری دے دو۔"
-                یہ وقت ہے کہ ہم زکوٰۃ کو بوجھ نہیں، بلکہ ایک سماجی اور روحانی سرمایہ کاری سمجھیں، تاکہ ہمارا معاشرہ زیادہ منصفانہ، مستحکم اور خوشحال بن سکے۔
+                Zakat is a financial system in Islam that ensures the equitable distribution of wealth and social justice. It is mentioned 32 times in the Quran, highlighting its extraordinary importance. The purpose of Zakat is not only to help the poor but also to create balance in the economy and maintain the circulation of wealth. Today, poverty and economic inequality are increasing worldwide, but if every eligible Muslim pays Zakat honestly, no one will sleep hungry. Allah says: "Take from their wealth a charity to purify and sanctify them and pray for them; indeed, your prayer is a source of comfort for them." (At-Tawbah: 103) On the other hand, there is a severe warning for those who do not pay Zakat: "And those who hoard gold and silver and do not spend it in the way of Allah, give them tidings of a painful punishment." (At-Tawbah: 34) It is time that we consider Zakat not as a burden but as a social and spiritual investment, so that our society can become more just, stable, and prosperous.
             </p>
         </div>
 
         <!-- موجودہ اثاثوں کی تفصیل -->
         <div id="assetsSection">
-            <h2 id="assetsHeading">موجودہ اثاثوں کی تفصیل</h2>
-            <label for="goldValue">سونے کی مالیت</label>
-            <input type="number" id="goldValue" placeholder="سونے کی مالیت درج کریں" min="0">
+            <h2 id="assetsHeading">Current Assets Details</h2>
+            <label for="goldValue">Value of Gold</label>
+            <input type="number" id="goldValue" placeholder="Enter value of gold" min="0">
 
-            <label for="silverValue">چاندی کی مالیت</label>
-            <input type="number" id="silverValue" placeholder="چاندی کی مالیت درج کریں" min="0">
+            <label for="silverValue">Value of Silver</label>
+            <input type="number" id="silverValue" placeholder="Enter value of silver" min="0">
 
-            <label for="cash">نقدی/کیش</label>
-            <input type="number" id="cash" placeholder="نقدی کی مالیت درج کریں" min="0">
+            <label for="cash">Cash</label>
+            <input type="number" id="cash" placeholder="Enter cash amount" min="0">
 
-            <label for="bankBalance">بینک بیلنس</label>
-            <input type="number" id="bankBalance" placeholder="بینک بیلنس درج کریں" min="0">
+            <label for="bankBalance">Bank Balance</label>
+            <input type="number" id="bankBalance" placeholder="Enter bank balance" min="0">
 
-            <label for="loansGiven">ادھار یا امانت دی گئی رقم</label>
-            <input type="number" id="loansGiven" placeholder="ادھار کی رقم درج کریں" min="0">
+            <label for="loansGiven">Loans Given</label>
+            <input type="number" id="loansGiven" placeholder="Enter loans given" min="0">
 
-            <label for="insurance">انشورنس پالیسی میں اصل جمع شدہ رقم</label>
-            <input type="number" id="insurance" placeholder="انشورنس کی رقم درج کریں" min="0">
+            <label for="insurance">Insurance Policy Amount</label>
+            <input type="number" id="insurance" placeholder="Enter insurance amount" min="0">
 
-            <label for="foreignCurrency">غیر ملکی کرنسی / شیئرز</label>
-            <input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی / شیئرز کی مالیت درج کریں" min="0">
+            <label for="foreignCurrency">Foreign Currency / Shares</label>
+            <input type="number" id="foreignCurrency" placeholder="Enter value of foreign currency / shares" min="0">
 
-            <label for="tradeStock">سامان تجارت/ خام مال</label>
-            <input type="number" id="tradeStock" placeholder="سامان تجارت/ خام مال کی مالیت درج کریں" min="0">
+            <label for="tradeStock">Trade Goods / Raw Material</label>
+            <input type="number" id="tradeStock" placeholder="Enter value of trade goods / raw material" min="0">
 
-            <label for="property">بیچنے کی نیت سے خریدی گئی دکان/مکان/پلاٹ/گاڑی</label>
-            <input type="number" id="property" placeholder="جائیداد کی مالیت درج کریں" min="0">
+            <label for="property">Property Intended for Sale</label>
+            <input type="number" id="property" placeholder="Enter value of property" min="0">
 
-            <label for="otherAssets">دیگر ضرورت سے زائد چیزوں کی مالیت</label>
-            <input type="number" id="otherAssets" placeholder="دیگر اموال کی مالیت درج کریں" min="0">
+            <label for="otherAssets">Other Excess Assets</label>
+            <input type="number" id="otherAssets" placeholder="Enter value of other assets" min="0">
 
             <button onclick="showLiabilitiesSection()">Next</button>
         </div>
 
         <!-- واجب الادا قرضے اور اخراجات -->
         <div id="liabilitiesSection" class="hidden">
-            <h2 id="liabilitiesHeading">واجب الادا قرضے اور اخراجات</h2>
-            <label for="loansTaken">قرضہ</label>
-            <input type="number" id="loansTaken" placeholder="قرضہ کی رقم درج کریں" min="0">
+            <h2 id="liabilitiesHeading">Liabilities and Expenses</h2>
+            <label for="loansTaken">Loans Taken</label>
+            <input type="number" id="loansTaken" placeholder="Enter loans taken" min="0">
 
-            <label for="mehr">بیوی کا غیر ادا شدہ مہر</label>
-            <input type="number" id="mehr" placeholder="مہر کی رقم درج کریں" min="0">
+            <label for="mehr">Unpaid Dowry</label>
+            <input type="number" id="mehr" placeholder="Enter unpaid dowry" min="0">
 
-            <label for="electricityBill">بجلی کا واجب الادا بل</label>
-            <input type="number" id="electricityBill" placeholder="بجلی کا بل درج کریں" min="0">
+            <label for="electricityBill">Electricity Bill</label>
+            <input type="number" id="electricityBill" placeholder="Enter electricity bill" min="0">
 
-            <label for="gasBill">گیس کا واجب الادا بل</label>
-            <input type="number" id="gasBill" placeholder="گیس کا بل درج کریں" min="0">
+            <label for="gasBill">Gas Bill</label>
+            <input type="number" id="gasBill" placeholder="Enter gas bill" min="0">
 
-            <label for="waterBill">پانی کا واجب الادا بل</label>
-            <input type="number" id="waterBill" placeholder="پانی کا بل درج کریں" min="0">
+            <label for="waterBill">Water Bill</label>
+            <input type="number" id="waterBill" placeholder="Enter water bill" min="0">
 
-            <label for="phoneBill">ٹیلی فون کا واجب الادا بل</label>
-            <input type="number" id="phoneBill" placeholder="ٹیلی فون کا بل درج کریں" min="0">
+            <label for="phoneBill">Phone Bill</label>
+            <input type="number" id="phoneBill" placeholder="Enter phone bill" min="0">
 
-            <label for="rentHouse">مکان کا واجب الادا کرایہ</label>
-            <input type="number" id="rentHouse" placeholder="مکان کا کرایہ درج کریں" min="0">
+            <label for="rentHouse">House Rent</label>
+            <input type="number" id="rentHouse" placeholder="Enter house rent" min="0">
 
-            <label for="rentShop">دکان کا واجب الادا کرایہ</label>
-            <input type="number" id="rentShop" placeholder="دکان کا کرایہ درج کریں" min="0">
+            <label for="rentShop">Shop Rent</label>
+            <input type="number" id="rentShop" placeholder="Enter shop rent" min="0">
 
-            <label for="rentWarehouse">گودام کا واجب الادا کرایہ</label>
-            <input type="number" id="rentWarehouse" placeholder="گودام کا کرایہ درج کریں" min="0">
+            <label for="rentWarehouse">Warehouse Rent</label>
+            <input type="number" id="rentWarehouse" placeholder="Enter warehouse rent" min="0">
 
-            <label for="salaries">ملازمین کی واجب الادا تنخواہیں</label>
-            <input type="number" id="salaries" placeholder="تنخواہیں درج کریں" min="0">
+            <label for="salaries">Unpaid Salaries</label>
+            <input type="number" id="salaries" placeholder="Enter unpaid salaries" min="0">
 
-            <label for="otherLiabilities">دیگر واجب الادا اخراجات</label>
-            <input type="number" id="otherLiabilities" placeholder="دیگر اخراجات درج کریں" min="0">
+            <label for="otherLiabilities">Other Liabilities</label>
+            <input type="number" id="otherLiabilities" placeholder="Enter other liabilities" min="0">
 
-            <button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
+            <button onclick="calculateZakat()">Calculate Zakat</button>
         </div>
 
         <!-- نتیجہ -->
@@ -229,16 +226,18 @@
 
         <!-- رابطہ کے بٹنز -->
         <div class="feedback hidden" id="feedbackSection">
-            <p id="feedbackText">زکوٰۃ یا مصارف زکوٰۃ کے بارے میں مزید معلومات کے لیے رابطہ کریں</p>
+            <p id="feedbackText">For more information about Zakat or its distribution, contact us</p>
             <div class="contact-buttons">
-                <a href="tel:+919764878916">فون پر رابطہ کریں</a>
-                <a href="https://wa.me/919764878916" target="_blank">واٹس ایپ پر رابطہ کریں</a>
+                <a href="tel:+919764878916">Call Us</a>
+                <a href="https://wa.me/919764878916" target="_blank">WhatsApp Us</a>
             </div>
+            <!-- بیک یا ہوم بٹن -->
+            <button class="back-button" onclick="goBackToHome()">Back to Home</button>
         </div>
 
         <!-- شائع کردہ -->
         <div class="footer">
-            <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="النصیحہ اکیڈمی" style="width: 80px; height: auto; margin-top: 10px;">
+            <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" alt="Al-Naseeha Academy" style="width: 80px; height: auto; margin-top: 10px;">
         </div>
     </div>
 
@@ -318,9 +317,9 @@
 
                 if (netAmount >= nisab) {
                     const zakat = (netAmount * 2.5) / 100;
-                    document.getElementById('result').innerText = `آپ پر زکوٰۃ واجب الادا ہے: ${zakat.toFixed(2)} روپے`;
+                    document.getElementById('result').innerText = `Your payable Zakat is: ${zakat.toFixed(2)} Rupees`;
                 } else {
-                    document.getElementById('result').innerText = 'آپ صاحب نصاب نہیں ہیں، لہذا آپ پر زکوٰۃ واجب نہیں ہے۔';
+                    document.getElementById('result').innerText = 'You are not eligible for Zakat.';
                 }
 
                 // تمام سیکشنز چھپائیں اور صرف نتیجہ ظاہر کریں
@@ -328,12 +327,24 @@
                 document.getElementById('result').classList.remove('hidden');
                 document.getElementById('feedbackSection').classList.remove('hidden');
             } catch (error) {
-                document.getElementById('result').innerText = 'غلطی: کوئی مسئلہ پیش آیا ہے۔';
+                document.getElementById('result').innerText = 'Error: Something went wrong.';
             }
         }
 
+        // بیک یا ہوم بٹن کا فنکشن
+        function goBackToHome() {
+            document.getElementById('introSection').classList.remove('hidden');
+            document.getElementById('assetsSection').classList.remove('hidden');
+            document.getElementById('liabilitiesSection').classList.add('hidden');
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+
+            // اسکرین کو اوپر لے جائیں
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // ڈیفالٹ زبان
-        changeLanguage('ur');
+        changeLanguage('en');
     </script>
 </body>
-</html>
+    </html>

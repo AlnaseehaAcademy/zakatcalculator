@@ -421,3 +421,25 @@
 
         // بیک یا ہوم بٹن کا فنکشن
         function goBackToHome() {
+            document.getElementById('introSection').classList.remove('hidden');
+            document.getElementById('assetsSection').classList.remove('hidden');
+            document.getElementById('liabilitiesSection').classList.add('hidden');
+            document.getElementById('result').classList.add('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+
+            // اسکرین کو اوپر لے جائیں
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ڈیفالٹ زبان
+        let currentLang = 'ur'; // بائی ڈیفالٹ اردو
+        changeLanguage(currentLang);
+
+        // زبان سوئچ کرنے کا فنکشن
+        function switchLanguage(lang) {
+            currentLang = lang;
+            changeLanguage(lang);
+        }
+    </script>
+</body>
+</html>

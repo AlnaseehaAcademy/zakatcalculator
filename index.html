@@ -47,7 +47,7 @@ box-shadow:0 0 10px rgba(0,0,0,0.1);
 position: relative;
 }
 
-/* Language Switch Buttons - نیچے کی طرف */
+/* Language Switch Buttons */
 .lang-switch {
     margin: 20px 0 10px 0;
     text-align: center;
@@ -73,6 +73,72 @@ position: relative;
 .lang-btn.active {
     background: #1e874b;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Nisab Section - نیا سیکشن */
+.nisab-section {
+    background: #f0f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #d4e6f1;
+}
+
+.nisab-section h3 {
+    color: #27ae60;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.nisab-input {
+    margin-bottom: 15px;
+}
+
+.nisab-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.nisab-input input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.nisab-input small {
+    display: block;
+    color: #666;
+    margin-top: 5px;
+}
+
+.nisab-result {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    border: 1px solid #27ae60;
+}
+
+.nisab-result .label {
+    font-size: 14px;
+    color: #666;
+}
+
+.nisab-result .value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #27ae60;
+    margin: 5px 0;
+}
+
+.nisab-result .tola-detail {
+    font-size: 14px;
+    color: #666;
 }
 
 /* For English layout */
@@ -173,10 +239,27 @@ color:#777;
 <h1 id="mainTitle">زکوٰۃ کیلکولیٹر</h1>
 <h3 id="subTitle">رمضان 2026</h3>
 
-<!-- Language Switch Buttons - نیچے کی طرف -->
+<!-- Language Switch Buttons -->
 <div class="lang-switch">
     <button class="lang-btn" onclick="setLanguage('urdu')" id="urduBtn">اردو</button>
     <button class="lang-btn" onclick="setLanguage('english')" id="englishBtn">English</button>
+</div>
+
+<!-- نیا سیکشن: چاندی کی قیمت اور نصاب -->
+<div class="nisab-section" id="nisabSection">
+    <h3 id="nisabHeading">⚖️ نصاب کا تعین</h3>
+    
+    <div class="nisab-input">
+        <label id="silverPriceLabel">آج اپنے علاقے میں ایک گرام چاندی کی قیمت درج کریں (روپے میں)</label>
+        <input type="number" id="silverPricePerGram" placeholder="مثلاً: 85" step="0.01" oninput="calculateNisab()">
+        <small id="silverPriceHint">نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.36 گرام</small>
+    </div>
+    
+    <div class="nisab-result" id="nisabResult">
+        <div class="label" id="nisabLabel">ساڑھے باون تولہ (612.36 گرام) چاندی کا نصاب</div>
+        <div class="value" id="nisabValue">0 روپے</div>
+        <div class="tola-detail" id="nisabDetail">(ساڑھے باون تولہ = 52.5 تولہ)</div>
+    </div>
 </div>
 
 <div id="assetsSection">
@@ -186,7 +269,7 @@ color:#777;
 <label id="goldLabel">سونے کی مالیت</label>
 <input type="number" id="goldValue">
 
-<label id="silverLabel">چاندی کی مالیت</label>
+<label id="silverLabel">چاندی کی مالیت (اضافی چاندی)</label>
 <input type="number" id="silverValue">
 
 <label id="cashLabel">نقدی</label>
@@ -300,9 +383,14 @@ const translations = {
     urdu: {
         mainTitle: "زکوٰۃ کیلکولیٹر",
         subTitle: "رمضان 2026",
+        nisabHeading: "⚖️ نصاب کا تعین",
+        silverPriceLabel: "آج اپنے علاقے میں ایک گرام چاندی کی قیمت درج کریں (روپے میں)",
+        silverPriceHint: "نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.36 گرام",
+        nisabLabel: "ساڑھے باون تولہ (612.36 گرام) چاندی کا نصاب",
+        nisabDetail: "(ساڑھے باون تولہ = 52.5 تولہ)",
         assetsTitle: "موجودہ اثاثے",
         goldLabel: "سونے کی مالیت",
-        silverLabel: "چاندی کی مالیت",
+        silverLabel: "چاندی کی مالیت (اضافی چاندی)",
         cashLabel: "نقدی",
         bankLabel: "بینک بیلنس",
         loansGivenLabel: "ادھار دی گئی رقم",
@@ -338,9 +426,14 @@ const translations = {
     english: {
         mainTitle: "Zakat Calculator",
         subTitle: "Ramadan 2026",
+        nisabHeading: "⚖️ Nisab Determination",
+        silverPriceLabel: "Enter today's price of one gram silver in your area (in Rupees)",
+        silverPriceHint: "Note: 1 Tola = 11.66 grams, 52.5 Tola = 612.36 grams",
+        nisabLabel: "Nisab for 52.5 Tola (612.36 grams) Silver",
+        nisabDetail: "(52.5 Tola)",
         assetsTitle: "Current Assets",
         goldLabel: "Gold Value",
-        silverLabel: "Silver Value",
+        silverLabel: "Silver Value (additional silver)",
         cashLabel: "Cash",
         bankLabel: "Bank Balance",
         loansGivenLabel: "Loans Given",
@@ -376,6 +469,7 @@ const translations = {
 };
 
 let currentLang = 'urdu';
+let currentNisab = 0;
 
 function setLanguage(lang) {
     currentLang = lang;
@@ -409,6 +503,11 @@ function updateLanguage() {
     // Update all text elements
     document.getElementById('mainTitle').textContent = t.mainTitle;
     document.getElementById('subTitle').textContent = t.subTitle;
+    document.getElementById('nisabHeading').textContent = t.nisabHeading;
+    document.getElementById('silverPriceLabel').textContent = t.silverPriceLabel;
+    document.getElementById('silverPriceHint').textContent = t.silverPriceHint;
+    document.getElementById('nisabLabel').textContent = t.nisabLabel;
+    document.getElementById('nisabDetail').textContent = t.nisabDetail;
     document.getElementById('assetsTitle').textContent = t.assetsTitle;
     document.getElementById('goldLabel').textContent = t.goldLabel;
     document.getElementById('silverLabel').textContent = t.silverLabel;
@@ -449,7 +548,27 @@ function updateLanguage() {
     document.getElementById('englishBtn').textContent = t.englishBtn;
 }
 
-const nisab=170000;
+// نصاب کا حساب لگانے کا فنکشن
+function calculateNisab() {
+    const silverPricePerGram = parseFloat(document.getElementById('silverPricePerGram').value) || 0;
+    
+    // ساڑھے باون تولہ = 52.5 تولہ
+    // ایک تولہ = 11.66 گرام
+    // کل گرام = 52.5 * 11.66 = 612.36 گرام
+    const GRAMS_IN_TOLA = 11.66;
+    const NISAB_TOLA = 52.5;
+    const totalGrams = NISAB_TOLA * GRAMS_IN_TOLA; // 612.36 گرام
+    
+    currentNisab = silverPricePerGram * totalGrams;
+    
+    // نتیجہ دکھائیں
+    document.getElementById('nisabValue').innerHTML = currentNisab.toLocaleString() + ' روپے';
+    
+    return currentNisab;
+}
+
+// فوری طور پر نصاب اپ ڈیٹ کریں جب صارف قیمت ڈالے
+document.getElementById('silverPricePerGram').addEventListener('input', calculateNisab);
 
 const assets=[
 'goldValue','silverValue','cash','bankBalance','loansGiven',
@@ -479,6 +598,17 @@ window.scrollTo({top:0,behavior:'smooth'});
 
 function calculateZakat(){
 
+// پہلے چیک کریں کہ چاندی کی قیمت ڈالی گئی ہے یا نہیں
+if (!document.getElementById('silverPricePerGram').value) {
+    alert(currentLang === 'urdu' ? 
+          'براہ کرم پہلے چاندی کی قیمت درج کریں' : 
+          'Please enter silver price first');
+    return;
+}
+
+// نصاب کا حساب لگائیں (تازہ ترین)
+let nisab = calculateNisab();
+
 let totalAssets=assets.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
 
 let totalLiabilities=liabilities.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
@@ -491,16 +621,48 @@ let text="";
 
 if(net>=nisab){
     if(currentLang === 'urdu') {
-        text=`کل اثاثے: ${totalAssets.toLocaleString()} روپے\n\nکل قرضے: ${totalLiabilities.toLocaleString()} روپے\n\nقابلِ زکوٰۃ مال:\n${net.toLocaleString()} روپے\n\nواجب زکوٰۃ:\n${zakat.toLocaleString()} روپے`;
+        text=`آج کا نصاب: ${nisab.toLocaleString()} روپے
+        
+کل اثاثے: ${totalAssets.toLocaleString()} روپے
+
+کل قرضے: ${totalLiabilities.toLocaleString()} روپے
+
+قابلِ زکوٰۃ مال:
+${net.toLocaleString()} روپے
+
+واجب زکوٰۃ (2.5%):
+${zakat.toLocaleString()} روپے`;
     } else {
-        text=`Total Assets: Rs. ${totalAssets.toLocaleString()}\n\nTotal Liabilities: Rs. ${totalLiabilities.toLocaleString()}\n\nZakatable Amount:\nRs. ${net.toLocaleString()}\n\nZakat Due:\nRs. ${zakat.toLocaleString()}`;
+        text=`Today's Nisab: Rs. ${nisab.toLocaleString()}
+
+Total Assets: Rs. ${totalAssets.toLocaleString()}
+
+Total Liabilities: Rs. ${totalLiabilities.toLocaleString()}
+
+Zakatable Amount:
+Rs. ${net.toLocaleString()}
+
+Zakat Due (2.5%):
+Rs. ${zakat.toLocaleString()}`;
     }
 }else{
     let remain=nisab-net;
     if(currentLang === 'urdu') {
-        text=`آپ صاحب نصاب نہیں ہیں\n\nنصاب تک پہنچنے کیلئے مزید\n\n${remain.toLocaleString()} روپے درکار ہیں`;
+        text=`آپ صاحب نصاب نہیں ہیں
+
+آج کا نصاب: ${nisab.toLocaleString()} روپے
+آپ کی کل مالیت: ${net.toLocaleString()} روپے
+
+نصاب تک پہنچنے کیلئے مزید
+${remain.toLocaleString()} روپے درکار ہیں`;
     } else {
-        text=`You are not Sahib-e-Nisab\n\nAmount needed to reach Nisab:\nRs. ${remain.toLocaleString()}`;
+        text=`You are not Sahib-e-Nisab
+
+Today's Nisab: Rs. ${nisab.toLocaleString()}
+Your Net Worth: Rs. ${net.toLocaleString()}
+
+Amount needed to reach Nisab:
+Rs. ${remain.toLocaleString()}`;
     }
 }
 

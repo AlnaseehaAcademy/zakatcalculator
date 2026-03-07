@@ -16,17 +16,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>زکوٰۃ کیلکولیٹر - النصیحہ اکیڈمی</title>
-
-<meta name="description" content="آسان زکوٰۃ کیلکولیٹر">
-<meta name="keywords" content="Zakat Calculator, زکوٰۃ کیلکولیٹر, Ramadan Zakat">
-<meta name="author" content="Al Naseeha Academy">
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#27ae60">
-
 <link rel="icon" href="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400&display=swap" rel="stylesheet">
 
 <style>
 
@@ -38,11 +30,6 @@ padding:20px;
 text-align:center;
 }
 
-.dark{
-background:#121212;
-color:white;
-}
-
 .container{
 max-width:800px;
 margin:auto;
@@ -50,10 +37,6 @@ background:white;
 padding:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-.dark .container{
-background:#1e1e1e;
 }
 
 input,button{
@@ -72,6 +55,10 @@ border:none;
 cursor:pointer;
 }
 
+button:hover{
+background:#1e874b;
+}
+
 .hidden{
 display:none;
 }
@@ -85,6 +72,10 @@ font-weight:bold;
 white-space:pre-line;
 }
 
+.contact-buttons{
+margin-top:15px;
+}
+
 .contact-buttons a{
 display:inline-block;
 background:#27ae60;
@@ -95,13 +86,17 @@ border-radius:5px;
 text-decoration:none;
 }
 
+.footer{
+margin-top:25px;
+font-size:14px;
+color:#777;
+}
+
 </style>
 
 </head>
 
 <body>
-
-<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
 <div class="container">
 
@@ -114,16 +109,35 @@ text-decoration:none;
 
 <h2>موجودہ اثاثے</h2>
 
-<input type="number" id="goldValue" placeholder="سونے کی مالیت">
-<input type="number" id="silverValue" placeholder="چاندی کی مالیت">
-<input type="number" id="cash" placeholder="نقدی">
-<input type="number" id="bankBalance" placeholder="بینک بیلنس">
-<input type="number" id="loansGiven" placeholder="ادھار دی گئی رقم">
-<input type="number" id="insurance" placeholder="انشورنس">
-<input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی / شیئرز">
-<input type="number" id="tradeStock" placeholder="سامان تجارت">
-<input type="number" id="property" placeholder="بیچنے کی نیت سے خریدی گئی جائیداد">
-<input type="number" id="otherAssets" placeholder="دیگر زائد اموال">
+<label>سونے کی مالیت</label>
+<input type="number" id="goldValue">
+
+<label>چاندی کی مالیت</label>
+<input type="number" id="silverValue">
+
+<label>نقدی</label>
+<input type="number" id="cash">
+
+<label>بینک بیلنس</label>
+<input type="number" id="bankBalance">
+
+<label>ادھار دی گئی رقم</label>
+<input type="number" id="loansGiven">
+
+<label>انشورنس پالیسی</label>
+<input type="number" id="insurance">
+
+<label>غیر ملکی کرنسی / شیئرز</label>
+<input type="number" id="foreignCurrency">
+
+<label>سامان تجارت</label>
+<input type="number" id="tradeStock">
+
+<label>بیچنے کی نیت سے خریدی گئی جائیداد</label>
+<input type="number" id="property">
+
+<label>دیگر زائد اموال</label>
+<input type="number" id="otherAssets">
 
 <button onclick="showLiabilities()">اگلا</button>
 
@@ -134,23 +148,46 @@ text-decoration:none;
 
 <h2>قرضے اور اخراجات</h2>
 
-<input type="number" id="loansTaken" placeholder="قرضہ">
-<input type="number" id="mehr" placeholder="غیر ادا شدہ مہر">
-<input type="number" id="electricityBill" placeholder="بجلی بل">
-<input type="number" id="gasBill" placeholder="گیس بل">
-<input type="number" id="waterBill" placeholder="پانی بل">
-<input type="number" id="phoneBill" placeholder="فون بل">
-<input type="number" id="rentHouse" placeholder="مکان کرایہ">
-<input type="number" id="rentShop" placeholder="دکان کرایہ">
-<input type="number" id="rentWarehouse" placeholder="گودام کرایہ">
-<input type="number" id="salaries" placeholder="تنخواہیں">
-<input type="number" id="otherLiabilities" placeholder="دیگر اخراجات">
+<label>قرضہ</label>
+<input type="number" id="loansTaken">
+
+<label>غیر ادا شدہ مہر</label>
+<input type="number" id="mehr">
+
+<label>بجلی بل</label>
+<input type="number" id="electricityBill">
+
+<label>گیس بل</label>
+<input type="number" id="gasBill">
+
+<label>پانی بل</label>
+<input type="number" id="waterBill">
+
+<label>فون بل</label>
+<input type="number" id="phoneBill">
+
+<label>مکان کرایہ</label>
+<input type="number" id="rentHouse">
+
+<label>دکان کرایہ</label>
+<input type="number" id="rentShop">
+
+<label>گودام کرایہ</label>
+<input type="number" id="rentWarehouse">
+
+<label>تنخواہیں</label>
+<input type="number" id="salaries">
+
+<label>دیگر اخراجات</label>
+<input type="number" id="otherLiabilities">
 
 <button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
 
 </div>
 
+
 <div id="result" class="result hidden"></div>
+
 
 <div id="feedback" class="hidden">
 
@@ -170,21 +207,14 @@ text-decoration:none;
 
 </div>
 
-<h3>زکوٰۃ رہنمائی</h3>
+<div class="footer">
 
-<p>زکوٰۃ درج ذیل اموال پر فرض ہوتی ہے:</p>
-
-<ul style="text-align:right">
-
-<li>سونا اور چاندی</li>
-<li>نقد رقم</li>
-<li>بینک بیلنس</li>
-<li>سامان تجارت</li>
-<li>ادھار دی گئی رقم</li>
-
-</ul>
+النصیحہ اکیڈمی
 
 </div>
+
+</div>
+
 
 <script>
 
@@ -208,9 +238,12 @@ localStorage.setItem(input.id,input.value);
 });
 
 function showLiabilities(){
+
 document.getElementById("assetsSection").classList.add("hidden");
 document.getElementById("liabilitiesSection").classList.remove("hidden");
-window.scrollTo({top:0});
+
+window.scrollTo({top:0,behavior:'smooth'});
+
 }
 
 function calculateZakat(){
@@ -227,15 +260,15 @@ let text="";
 
 if(net>=nisab){
 
-text=`کل اثاثے: ${totalAssets.toLocaleString()}
+text=`کل اثاثے: ${totalAssets.toLocaleString()} روپے
 
-کل قرضے: ${totalLiabilities.toLocaleString()}
+کل قرضے: ${totalLiabilities.toLocaleString()} روپے
 
-قابل زکوٰۃ مال:
-${net.toLocaleString()}
+قابلِ زکوٰۃ مال:
+${net.toLocaleString()} روپے
 
 واجب زکوٰۃ:
-${zakat.toLocaleString()}`;
+${zakat.toLocaleString()} روپے`;
 
 }else{
 
@@ -263,7 +296,9 @@ function shareResult(){
 
 let text=document.getElementById("result").innerText;
 
-window.open("https://wa.me/?text="+encodeURIComponent(text));
+let url="https://wa.me/?text="+encodeURIComponent(text);
+
+window.open(url);
 
 }
 
@@ -291,27 +326,7 @@ document.getElementById("result").classList.add("hidden");
 
 document.getElementById("feedback").classList.add("hidden");
 
-window.scrollTo({top:0});
-
-}
-
-function toggleDarkMode(){
-
-document.body.classList.toggle("dark");
-
-localStorage.setItem("darkMode",document.body.classList.contains("dark"));
-
-}
-
-if(localStorage.getItem("darkMode")=="true"){
-
-document.body.classList.add("dark");
-
-}
-
-if('serviceWorker' in navigator){
-
-navigator.serviceWorker.register('service-worker.js');
+window.scrollTo({top:0,behavior:'smooth'});
 
 }
 
@@ -319,6 +334,3 @@ navigator.serviceWorker.register('service-worker.js');
 
 </body>
 </html>
-
-
-

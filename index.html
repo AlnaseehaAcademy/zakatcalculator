@@ -28,6 +28,13 @@ background:#f4f4f4;
 margin:0;
 padding:20px;
 text-align:center;
+transition: all 0.3s ease;
+}
+
+body.english-lang {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    direction: ltr;
+    text-align: left;
 }
 
 .container{
@@ -37,6 +44,52 @@ background:white;
 padding:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
+position: relative;
+}
+
+/* Language Switch Buttons - نیچے کی طرف */
+.lang-switch {
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+
+.lang-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto;
+    display: inline-block;
+}
+
+.lang-btn:hover {
+    background: #1e874b;
+}
+
+.lang-btn.active {
+    background: #1e874b;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* For English layout */
+body.english-lang .container {
+    direction: ltr;
+    text-align: left;
+}
+
+body.english-lang h1, 
+body.english-lang h2, 
+body.english-lang h3,
+body.english-lang label,
+body.english-lang .result,
+body.english-lang .contact-message,
+body.english-lang .footer {
+    text-align: left;
+    font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
 input,button{
@@ -72,8 +125,23 @@ font-weight:bold;
 white-space:pre-line;
 }
 
+.contact-message {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-right: 4px solid #27ae60;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+body.english-lang .contact-message {
+    border-right: none;
+    border-left: 4px solid #27ae60;
+}
+
 .contact-buttons{
-margin-top:15px;
+margin-top:10px;
 }
 
 .contact-buttons a{
@@ -102,86 +170,92 @@ color:#777;
 
 <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" width="100">
 
-<h1>زکوٰۃ کیلکولیٹر</h1>
-<h3>رمضان 2026</h3>
+<h1 id="mainTitle">زکوٰۃ کیلکولیٹر</h1>
+<h3 id="subTitle">رمضان 2026</h3>
+
+<!-- Language Switch Buttons - نیچے کی طرف -->
+<div class="lang-switch">
+    <button class="lang-btn" onclick="setLanguage('urdu')" id="urduBtn">اردو</button>
+    <button class="lang-btn" onclick="setLanguage('english')" id="englishBtn">English</button>
+</div>
 
 <div id="assetsSection">
 
-<h2>موجودہ اثاثے</h2>
+<h2 id="assetsTitle">موجودہ اثاثے</h2>
 
-<label>سونے کی مالیت</label>
+<label id="goldLabel">سونے کی مالیت</label>
 <input type="number" id="goldValue">
 
-<label>چاندی کی مالیت</label>
+<label id="silverLabel">چاندی کی مالیت</label>
 <input type="number" id="silverValue">
 
-<label>نقدی</label>
+<label id="cashLabel">نقدی</label>
 <input type="number" id="cash">
 
-<label>بینک بیلنس</label>
+<label id="bankLabel">بینک بیلنس</label>
 <input type="number" id="bankBalance">
 
-<label>ادھار دی گئی رقم</label>
+<label id="loansGivenLabel">ادھار دی گئی رقم</label>
 <input type="number" id="loansGiven">
 
-<label>انشورنس پالیسی</label>
+<label id="insuranceLabel">انشورنس پالیسی</label>
 <input type="number" id="insurance">
 
-<label>غیر ملکی کرنسی / شیئرز</label>
+<label id="foreignCurrencyLabel">غیر ملکی کرنسی / شیئرز</label>
 <input type="number" id="foreignCurrency">
 
-<label>سامان تجارت</label>
+<label id="tradeStockLabel">سامان تجارت</label>
 <input type="number" id="tradeStock">
 
-<label>بیچنے کی نیت سے خریدی گئی جائیداد</label>
+<label id="propertyLabel">بیچنے کی نیت سے خریدی گئی جائیداد</label>
 <input type="number" id="property">
 
-<label>دیگر زائد اموال</label>
+<label id="otherAssetsLabel">دیگر زائد اموال</label>
 <input type="number" id="otherAssets">
 
-<button onclick="showLiabilities()">اگلا</button>
+<button onclick="showLiabilities()" id="nextBtn">اگلا</button>
 
 </div>
 
 
 <div id="liabilitiesSection" class="hidden">
 
-<h2>قرضے اور اخراجات</h2>
+<h2 id="liabilitiesTitle">قرضے اور اخراجات</h2>
 
-<label>قرضہ</label>
+<label id="loansTakenLabel">قرضہ</label>
 <input type="number" id="loansTaken">
 
-<label>غیر ادا شدہ مہر</label>
+<label id="mehrLabel">غیر ادا شدہ مہر</label>
 <input type="number" id="mehr">
 
-<label>بجلی بل</label>
+<label id="electricityLabel">بجلی بل</label>
 <input type="number" id="electricityBill">
 
-<label>گیس بل</label>
+<label id="gasLabel">گیس بل</label>
 <input type="number" id="gasBill">
 
-<label>پانی بل</label>
+<label id="waterLabel">پانی بل</label>
 <input type="number" id="waterBill">
 
-<label>فون بل</label>
+<label id="phoneLabel">فون بل</label>
 <input type="number" id="phoneBill">
 
-<label>مکان کرایہ</label>
+<label id="rentHouseLabel">مکان کرایہ</label>
 <input type="number" id="rentHouse">
 
-<label>دکان کرایہ</label>
+<label id="rentShopLabel">دکان کرایہ</label>
 <input type="number" id="rentShop">
 
-<label>گودام کرایہ</label>
+<label id="rentWarehouseLabel">گودام کرایہ</label>
 <input type="number" id="rentWarehouse">
 
-<label>تنخواہیں</label>
+<label id="salariesLabel">تنخواہیں</label>
 <input type="number" id="salaries">
 
-<label>دیگر اخراجات</label>
+<label id="otherLiabilitiesLabel">دیگر اخراجات</label>
 <input type="number" id="otherLiabilities">
 
-<button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
+<button onclick="calculateZakat()" id="calculateBtn">زکوٰۃ کا حساب لگائیں</button>
 
 </div>
 
@@ -191,23 +265,28 @@ color:#777;
 
 <div id="feedback" class="hidden">
 
-<button onclick="shareResult()">WhatsApp پر شیئر کریں</button>
+<button onclick="shareResult()" id="shareBtn">WhatsApp پر شیئر کریں</button>
 
-<button onclick="downloadPDF()">PDF رپورٹ ڈاؤنلوڈ کریں</button>
+<button onclick="downloadPDF()" id="pdfBtn">PDF رپورٹ ڈاؤنلوڈ کریں</button>
+
+<!-- Contact Message -->
+<div class="contact-message" id="contactMessage">
+    اگر آپ زکوٰۃ یا مصارفِ زکوٰۃ کے بارے میں مزید معلومات چاہتے ہیں تو براہ کرم رابطہ کریں
+</div>
 
 <div class="contact-buttons">
 
-<a href="tel:+919764878916">فون کریں</a>
+<a href="tel:+919764878916" id="callBtn">📞 فون کریں</a>
 
-<a href="https://wa.me/919764878916">WhatsApp</a>
-
-</div>
-
-<button onclick="goHome()">واپس جائیں</button>
+<a href="https://wa.me/919764878916" id="whatsappBtn">📱 WhatsApp</a>
 
 </div>
 
-<div class="footer">
+<button onclick="goHome()" id="homeBtn">واپس جائیں</button>
+
+</div>
+
+<div class="footer" id="footerText">
 
 النصیحہ اکیڈمی
 
@@ -215,8 +294,160 @@ color:#777;
 
 </div>
 
-
 <script>
+// Language translations
+const translations = {
+    urdu: {
+        mainTitle: "زکوٰۃ کیلکولیٹر",
+        subTitle: "رمضان 2026",
+        assetsTitle: "موجودہ اثاثے",
+        goldLabel: "سونے کی مالیت",
+        silverLabel: "چاندی کی مالیت",
+        cashLabel: "نقدی",
+        bankLabel: "بینک بیلنس",
+        loansGivenLabel: "ادھار دی گئی رقم",
+        insuranceLabel: "انشورنس پالیسی",
+        foreignCurrencyLabel: "غیر ملکی کرنسی / شیئرز",
+        tradeStockLabel: "سامان تجارت",
+        propertyLabel: "بیچنے کی نیت سے خریدی گئی جائیداد",
+        otherAssetsLabel: "دیگر زائد اموال",
+        nextBtn: "اگلا",
+        liabilitiesTitle: "قرضے اور اخراجات",
+        loansTakenLabel: "قرضہ",
+        mehrLabel: "غیر ادا شدہ مہر",
+        electricityLabel: "بجلی بل",
+        gasLabel: "گیس بل",
+        waterLabel: "پانی بل",
+        phoneLabel: "فون بل",
+        rentHouseLabel: "مکان کرایہ",
+        rentShopLabel: "دکان کرایہ",
+        rentWarehouseLabel: "گودام کرایہ",
+        salariesLabel: "تنخواہیں",
+        otherLiabilitiesLabel: "دیگر اخراجات",
+        calculateBtn: "زکوٰۃ کا حساب لگائیں",
+        shareBtn: "WhatsApp پر شیئر کریں",
+        pdfBtn: "PDF رپورٹ ڈاؤنلوڈ کریں",
+        contactMessage: "اگر آپ زکوٰۃ یا مصارفِ زکوٰۃ کے بارے میں مزید معلومات چاہتے ہیں تو براہ کرم رابطہ کریں",
+        callBtn: "📞 فون کریں",
+        whatsappBtn: "📱 WhatsApp",
+        homeBtn: "واپس جائیں",
+        footerText: "النصیحہ اکیڈمی",
+        urduBtn: "اردو",
+        englishBtn: "English"
+    },
+    english: {
+        mainTitle: "Zakat Calculator",
+        subTitle: "Ramadan 2026",
+        assetsTitle: "Current Assets",
+        goldLabel: "Gold Value",
+        silverLabel: "Silver Value",
+        cashLabel: "Cash",
+        bankLabel: "Bank Balance",
+        loansGivenLabel: "Loans Given",
+        insuranceLabel: "Insurance Policy",
+        foreignCurrencyLabel: "Foreign Currency / Shares",
+        tradeStockLabel: "Trade Stock",
+        propertyLabel: "Property for Sale",
+        otherAssetsLabel: "Other Assets",
+        nextBtn: "Next",
+        liabilitiesTitle: "Liabilities & Expenses",
+        loansTakenLabel: "Loans Taken",
+        mehrLabel: "Unpaid Mehr",
+        electricityLabel: "Electricity Bill",
+        gasLabel: "Gas Bill",
+        waterLabel: "Water Bill",
+        phoneLabel: "Phone Bill",
+        rentHouseLabel: "House Rent",
+        rentShopLabel: "Shop Rent",
+        rentWarehouseLabel: "Warehouse Rent",
+        salariesLabel: "Salaries",
+        otherLiabilitiesLabel: "Other Expenses",
+        calculateBtn: "Calculate Zakat",
+        shareBtn: "Share on WhatsApp",
+        pdfBtn: "Download PDF Report",
+        contactMessage: "If you need more information about Zakat or Zakat expenses, please contact us",
+        callBtn: "📞 Call",
+        whatsappBtn: "📱 WhatsApp",
+        homeBtn: "Back to Home",
+        footerText: "Al Naseeha Academy",
+        urduBtn: "اردو",
+        englishBtn: "English"
+    }
+};
+
+let currentLang = 'urdu';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    if (lang === 'english') {
+        document.body.classList.add('english-lang');
+        document.documentElement.lang = 'en';
+    } else {
+        document.body.classList.remove('english-lang');
+        document.documentElement.lang = 'ur';
+    }
+    updateLanguage();
+    updateActiveButton();
+}
+
+function updateActiveButton() {
+    const urduBtn = document.getElementById('urduBtn');
+    const englishBtn = document.getElementById('englishBtn');
+    
+    if (currentLang === 'urdu') {
+        urduBtn.classList.add('active');
+        englishBtn.classList.remove('active');
+    } else {
+        englishBtn.classList.add('active');
+        urduBtn.classList.remove('active');
+    }
+}
+
+function updateLanguage() {
+    const t = translations[currentLang];
+    
+    // Update all text elements
+    document.getElementById('mainTitle').textContent = t.mainTitle;
+    document.getElementById('subTitle').textContent = t.subTitle;
+    document.getElementById('assetsTitle').textContent = t.assetsTitle;
+    document.getElementById('goldLabel').textContent = t.goldLabel;
+    document.getElementById('silverLabel').textContent = t.silverLabel;
+    document.getElementById('cashLabel').textContent = t.cashLabel;
+    document.getElementById('bankLabel').textContent = t.bankLabel;
+    document.getElementById('loansGivenLabel').textContent = t.loansGivenLabel;
+    document.getElementById('insuranceLabel').textContent = t.insuranceLabel;
+    document.getElementById('foreignCurrencyLabel').textContent = t.foreignCurrencyLabel;
+    document.getElementById('tradeStockLabel').textContent = t.tradeStockLabel;
+    document.getElementById('propertyLabel').textContent = t.propertyLabel;
+    document.getElementById('otherAssetsLabel').textContent = t.otherAssetsLabel;
+    document.getElementById('nextBtn').textContent = t.nextBtn;
+    
+    document.getElementById('liabilitiesTitle').textContent = t.liabilitiesTitle;
+    document.getElementById('loansTakenLabel').textContent = t.loansTakenLabel;
+    document.getElementById('mehrLabel').textContent = t.mehrLabel;
+    document.getElementById('electricityLabel').textContent = t.electricityLabel;
+    document.getElementById('gasLabel').textContent = t.gasLabel;
+    document.getElementById('waterLabel').textContent = t.waterLabel;
+    document.getElementById('phoneLabel').textContent = t.phoneLabel;
+    document.getElementById('rentHouseLabel').textContent = t.rentHouseLabel;
+    document.getElementById('rentShopLabel').textContent = t.rentShopLabel;
+    document.getElementById('rentWarehouseLabel').textContent = t.rentWarehouseLabel;
+    document.getElementById('salariesLabel').textContent = t.salariesLabel;
+    document.getElementById('otherLiabilitiesLabel').textContent = t.otherLiabilitiesLabel;
+    document.getElementById('calculateBtn').textContent = t.calculateBtn;
+    
+    document.getElementById('shareBtn').textContent = t.shareBtn;
+    document.getElementById('pdfBtn').textContent = t.pdfBtn;
+    document.getElementById('contactMessage').textContent = t.contactMessage;
+    document.getElementById('callBtn').innerHTML = t.callBtn;
+    document.getElementById('whatsappBtn').innerHTML = t.whatsappBtn;
+    document.getElementById('homeBtn').textContent = t.homeBtn;
+    document.getElementById('footerText').textContent = t.footerText;
+    
+    // Update language buttons
+    document.getElementById('urduBtn').textContent = t.urduBtn;
+    document.getElementById('englishBtn').textContent = t.englishBtn;
+}
 
 const nisab=170000;
 
@@ -259,27 +490,18 @@ let zakat=net*0.025;
 let text="";
 
 if(net>=nisab){
-
-text=`کل اثاثے: ${totalAssets.toLocaleString()} روپے
-
-کل قرضے: ${totalLiabilities.toLocaleString()} روپے
-
-قابلِ زکوٰۃ مال:
-${net.toLocaleString()} روپے
-
-واجب زکوٰۃ:
-${zakat.toLocaleString()} روپے`;
-
+    if(currentLang === 'urdu') {
+        text=`کل اثاثے: ${totalAssets.toLocaleString()} روپے\n\nکل قرضے: ${totalLiabilities.toLocaleString()} روپے\n\nقابلِ زکوٰۃ مال:\n${net.toLocaleString()} روپے\n\nواجب زکوٰۃ:\n${zakat.toLocaleString()} روپے`;
+    } else {
+        text=`Total Assets: Rs. ${totalAssets.toLocaleString()}\n\nTotal Liabilities: Rs. ${totalLiabilities.toLocaleString()}\n\nZakatable Amount:\nRs. ${net.toLocaleString()}\n\nZakat Due:\nRs. ${zakat.toLocaleString()}`;
+    }
 }else{
-
-let remain=nisab-net;
-
-text=`آپ صاحب نصاب نہیں ہیں
-
-نصاب تک پہنچنے کیلئے مزید
-
-${remain.toLocaleString()} روپے درکار ہیں`;
-
+    let remain=nisab-net;
+    if(currentLang === 'urdu') {
+        text=`آپ صاحب نصاب نہیں ہیں\n\nنصاب تک پہنچنے کیلئے مزید\n\n${remain.toLocaleString()} روپے درکار ہیں`;
+    } else {
+        text=`You are not Sahib-e-Nisab\n\nAmount needed to reach Nisab:\nRs. ${remain.toLocaleString()}`;
+    }
 }
 
 document.getElementById("result").innerText=text;
@@ -330,7 +552,11 @@ window.scrollTo({top:0,behavior:'smooth'});
 
 }
 
+// Initialize active button
+updateActiveButton();
+
 </script>
 
 </body>
+
 </html>

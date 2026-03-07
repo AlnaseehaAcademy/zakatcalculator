@@ -75,7 +75,7 @@ position: relative;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
-/* Nisab Section - نیا سیکشن */
+/* Nisab Section */
 .nisab-section {
     background: #f0f7ff;
     padding: 20px;
@@ -237,7 +237,7 @@ color:#777;
 <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" width="100">
 
 <h1 id="mainTitle">زکوٰۃ کیلکولیٹر</h1>
-<h3 id="subTitle">رمضان 2026</h3>
+<!-- رمضان 2026 ہٹا دیا گیا -->
 
 <!-- Language Switch Buttons -->
 <div class="lang-switch">
@@ -245,7 +245,7 @@ color:#777;
     <button class="lang-btn" onclick="setLanguage('english')" id="englishBtn">English</button>
 </div>
 
-<!-- نیا سیکشن: چاندی کی قیمت اور نصاب -->
+<!-- Nisab Section -->
 <div class="nisab-section" id="nisabSection">
     <h3 id="nisabHeading">⚖️ نصاب کا تعین</h3>
     
@@ -382,7 +382,6 @@ color:#777;
 const translations = {
     urdu: {
         mainTitle: "زکوٰۃ کیلکولیٹر",
-        subTitle: "رمضان 2026",
         nisabHeading: "⚖️ نصاب کا تعین",
         silverPriceLabel: "آج اپنے علاقے میں ایک گرام چاندی کی قیمت درج کریں (روپے میں)",
         silverPriceHint: "نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.36 گرام",
@@ -425,7 +424,6 @@ const translations = {
     },
     english: {
         mainTitle: "Zakat Calculator",
-        subTitle: "Ramadan 2026",
         nisabHeading: "⚖️ Nisab Determination",
         silverPriceLabel: "Enter today's price of one gram silver in your area (in Rupees)",
         silverPriceHint: "Note: 1 Tola = 11.66 grams, 52.5 Tola = 612.36 grams",
@@ -502,7 +500,6 @@ function updateLanguage() {
     
     // Update all text elements
     document.getElementById('mainTitle').textContent = t.mainTitle;
-    document.getElementById('subTitle').textContent = t.subTitle;
     document.getElementById('nisabHeading').textContent = t.nisabHeading;
     document.getElementById('silverPriceLabel').textContent = t.silverPriceLabel;
     document.getElementById('silverPriceHint').textContent = t.silverPriceHint;

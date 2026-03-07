@@ -1,72 +1,89 @@
 <!DOCTYPE html>
 <html lang="ur">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zakat Calculator | Al Naseeha Academy</title>
+<title>زکوٰۃ کیلکولیٹر - النصیحہ اکیڈمی</title>
+
+<meta name="description" content="آسان زکوٰۃ کیلکولیٹر">
+<meta name="keywords" content="Zakat Calculator, زکوٰۃ کیلکولیٹر, Ramadan Zakat">
+<meta name="author" content="Al Naseeha Academy">
 
 <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#27ae60">
+
+<link rel="icon" href="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-font-family: Arial;
+font-family:'Noto Nastaliq Urdu',serif;
 background:#f4f4f4;
 margin:0;
-padding:0;
+padding:20px;
 text-align:center;
 }
 
+.dark{
+background:#121212;
+color:white;
+}
+
 .container{
-max-width:500px;
+max-width:800px;
 margin:auto;
 background:white;
 padding:20px;
-margin-top:30px;
 border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-h1{
-color:#2c7a7b;
+.dark .container{
+background:#1e1e1e;
 }
 
-input{
-width:90%;
+input,button{
+width:100%;
 padding:10px;
-margin:10px 0;
-border:1px solid #ccc;
+margin:8px 0;
 border-radius:5px;
+border:1px solid #ccc;
 font-size:16px;
 }
 
 button{
-padding:12px;
-width:95%;
-background:#2c7a7b;
+background:#27ae60;
 color:white;
 border:none;
-border-radius:5px;
-font-size:16px;
 cursor:pointer;
-margin-top:10px;
 }
 
-button:hover{
-background:#205e5f;
+.hidden{
+display:none;
 }
 
 .result{
-font-size:22px;
-margin-top:20px;
-color:#333;
+background:#eafaf1;
+padding:15px;
+border-radius:5px;
+margin-top:15px;
+font-weight:bold;
+white-space:pre-line;
 }
 
-footer{
-margin-top:20px;
-font-size:14px;
-color:#777;
+.contact-buttons a{
+display:inline-block;
+background:#27ae60;
+color:white;
+padding:10px 15px;
+margin:5px;
+border-radius:5px;
+text-decoration:none;
 }
 
 </style>
@@ -75,50 +92,217 @@ color:#777;
 
 <body>
 
+<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
 <div class="container">
 
+<img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" width="100">
+
 <h1>زکوٰۃ کیلکولیٹر</h1>
+<h3>رمضان 2026</h3>
 
-<p>اپنے اثاثے درج کریں</p>
+<div id="assetsSection">
 
-<input type="number" id="cash" placeholder="نقد رقم">
+<h2>موجودہ اثاثے</h2>
 
-<input type="number" id="gold" placeholder="سونے کی مالیت">
+<input type="number" id="goldValue" placeholder="سونے کی مالیت">
+<input type="number" id="silverValue" placeholder="چاندی کی مالیت">
+<input type="number" id="cash" placeholder="نقدی">
+<input type="number" id="bankBalance" placeholder="بینک بیلنس">
+<input type="number" id="loansGiven" placeholder="ادھار دی گئی رقم">
+<input type="number" id="insurance" placeholder="انشورنس">
+<input type="number" id="foreignCurrency" placeholder="غیر ملکی کرنسی / شیئرز">
+<input type="number" id="tradeStock" placeholder="سامان تجارت">
+<input type="number" id="property" placeholder="بیچنے کی نیت سے خریدی گئی جائیداد">
+<input type="number" id="otherAssets" placeholder="دیگر زائد اموال">
 
-<input type="number" id="silver" placeholder="چاندی کی مالیت">
+<button onclick="showLiabilities()">اگلا</button>
 
-<input type="number" id="business" placeholder="کاروباری مال">
+</div>
 
-<input type="number" id="debts" placeholder="قرضہ">
 
-<button onclick="calculateZakat()">زکوٰۃ حساب کریں</button>
+<div id="liabilitiesSection" class="hidden">
 
-<div class="result" id="result"></div>
+<h2>قرضے اور اخراجات</h2>
 
-<footer>
+<input type="number" id="loansTaken" placeholder="قرضہ">
+<input type="number" id="mehr" placeholder="غیر ادا شدہ مہر">
+<input type="number" id="electricityBill" placeholder="بجلی بل">
+<input type="number" id="gasBill" placeholder="گیس بل">
+<input type="number" id="waterBill" placeholder="پانی بل">
+<input type="number" id="phoneBill" placeholder="فون بل">
+<input type="number" id="rentHouse" placeholder="مکان کرایہ">
+<input type="number" id="rentShop" placeholder="دکان کرایہ">
+<input type="number" id="rentWarehouse" placeholder="گودام کرایہ">
+<input type="number" id="salaries" placeholder="تنخواہیں">
+<input type="number" id="otherLiabilities" placeholder="دیگر اخراجات">
 
-Al Naseeha Academy
+<button onclick="calculateZakat()">زکوٰۃ کا حساب لگائیں</button>
 
-</footer>
+</div>
+
+<div id="result" class="result hidden"></div>
+
+<div id="feedback" class="hidden">
+
+<button onclick="shareResult()">WhatsApp پر شیئر کریں</button>
+
+<button onclick="downloadPDF()">PDF رپورٹ ڈاؤنلوڈ کریں</button>
+
+<div class="contact-buttons">
+
+<a href="tel:+919764878916">فون کریں</a>
+
+<a href="https://wa.me/919764878916">WhatsApp</a>
+
+</div>
+
+<button onclick="goHome()">واپس جائیں</button>
+
+</div>
+
+<h3>زکوٰۃ رہنمائی</h3>
+
+<p>زکوٰۃ درج ذیل اموال پر فرض ہوتی ہے:</p>
+
+<ul style="text-align:right">
+
+<li>سونا اور چاندی</li>
+<li>نقد رقم</li>
+<li>بینک بیلنس</li>
+<li>سامان تجارت</li>
+<li>ادھار دی گئی رقم</li>
+
+</ul>
 
 </div>
 
 <script>
 
+const nisab=170000;
+
+const assets=[
+'goldValue','silverValue','cash','bankBalance','loansGiven',
+'insurance','foreignCurrency','tradeStock','property','otherAssets'
+];
+
+const liabilities=[
+'loansTaken','mehr','electricityBill','gasBill','waterBill',
+'phoneBill','rentHouse','rentShop','rentWarehouse','salaries','otherLiabilities'
+];
+
+document.querySelectorAll("input").forEach(input=>{
+input.value=localStorage.getItem(input.id)||"";
+input.addEventListener("input",()=>{
+localStorage.setItem(input.id,input.value);
+});
+});
+
+function showLiabilities(){
+document.getElementById("assetsSection").classList.add("hidden");
+document.getElementById("liabilitiesSection").classList.remove("hidden");
+window.scrollTo({top:0});
+}
+
 function calculateZakat(){
 
-let cash = parseFloat(document.getElementById("cash").value) || 0;
-let gold = parseFloat(document.getElementById("gold").value) || 0;
-let silver = parseFloat(document.getElementById("silver").value) || 0;
-let business = parseFloat(document.getElementById("business").value) || 0;
-let debts = parseFloat(document.getElementById("debts").value) || 0;
+let totalAssets=assets.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
 
-let total = cash + gold + silver + business - debts;
+let totalLiabilities=liabilities.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
 
-let zakat = total * 0.025;
+let net=totalAssets-totalLiabilities;
 
-document.getElementById("result").innerHTML =
-"واجب زکوٰۃ: " + zakat.toFixed(2);
+let zakat=net*0.025;
+
+let text="";
+
+if(net>=nisab){
+
+text=`کل اثاثے: ${totalAssets.toLocaleString()}
+
+کل قرضے: ${totalLiabilities.toLocaleString()}
+
+قابل زکوٰۃ مال:
+${net.toLocaleString()}
+
+واجب زکوٰۃ:
+${zakat.toLocaleString()}`;
+
+}else{
+
+let remain=nisab-net;
+
+text=`آپ صاحب نصاب نہیں ہیں
+
+نصاب تک پہنچنے کیلئے مزید
+
+${remain.toLocaleString()} روپے درکار ہیں`;
+
+}
+
+document.getElementById("result").innerText=text;
+
+document.getElementById("liabilitiesSection").classList.add("hidden");
+
+document.getElementById("result").classList.remove("hidden");
+
+document.getElementById("feedback").classList.remove("hidden");
+
+}
+
+function shareResult(){
+
+let text=document.getElementById("result").innerText;
+
+window.open("https://wa.me/?text="+encodeURIComponent(text));
+
+}
+
+function downloadPDF(){
+
+let content=document.getElementById("result").innerText;
+
+let win=window.open("","","width=600,height=600");
+
+win.document.write("<h2>Zakat Report</h2>");
+
+win.document.write("<pre>"+content+"</pre>");
+
+win.print();
+
+}
+
+function goHome(){
+
+document.getElementById("assetsSection").classList.remove("hidden");
+
+document.getElementById("liabilitiesSection").classList.add("hidden");
+
+document.getElementById("result").classList.add("hidden");
+
+document.getElementById("feedback").classList.add("hidden");
+
+window.scrollTo({top:0});
+
+}
+
+function toggleDarkMode(){
+
+document.body.classList.toggle("dark");
+
+localStorage.setItem("darkMode",document.body.classList.contains("dark"));
+
+}
+
+if(localStorage.getItem("darkMode")=="true"){
+
+document.body.classList.add("dark");
+
+}
+
+if('serviceWorker' in navigator){
+
+navigator.serviceWorker.register('service-worker.js');
 
 }
 

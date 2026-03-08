@@ -237,7 +237,6 @@ color:#777;
 <img src="https://raw.githubusercontent.com/AlnaseehaAcademy/ZAKAT/main/1.png" width="100">
 
 <h1 id="mainTitle">زکوٰۃ کیلکولیٹر</h1>
-<!-- رمضان 2026 ہٹا دیا گیا -->
 
 <!-- Language Switch Buttons -->
 <div class="lang-switch">
@@ -252,11 +251,11 @@ color:#777;
     <div class="nisab-input">
         <label id="silverPriceLabel">آج اپنے علاقے میں ایک گرام چاندی کی قیمت درج کریں (روپے میں)</label>
         <input type="number" id="silverPricePerGram" placeholder="مثلاً: 85" step="0.01" oninput="calculateNisab()">
-        <small id="silverPriceHint">نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.36 گرام</small>
+        <small id="silverPriceHint">نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.15 گرام</small>
     </div>
     
     <div class="nisab-result" id="nisabResult">
-        <div class="label" id="nisabLabel">ساڑھے باون تولہ (612.36 گرام) چاندی کا نصاب</div>
+        <div class="label" id="nisabLabel">ساڑھے باون تولہ (612.15 گرام) چاندی کا نصاب</div>
         <div class="value" id="nisabValue">0 روپے</div>
         <div class="tola-detail" id="nisabDetail">(ساڑھے باون تولہ = 52.5 تولہ)</div>
     </div>
@@ -384,8 +383,8 @@ const translations = {
         mainTitle: "زکوٰۃ کیلکولیٹر",
         nisabHeading: "⚖️ نصاب کا تعین",
         silverPriceLabel: "آج اپنے علاقے میں ایک گرام چاندی کی قیمت درج کریں (روپے میں)",
-        silverPriceHint: "نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.36 گرام",
-        nisabLabel: "ساڑھے باون تولہ (612.36 گرام) چاندی کا نصاب",
+        silverPriceHint: "نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.15 گرام",
+        nisabLabel: "ساڑھے باون تولہ (612.15 گرام) چاندی کا نصاب",
         nisabDetail: "(ساڑھے باون تولہ = 52.5 تولہ)",
         assetsTitle: "موجودہ اثاثے",
         goldLabel: "سونے کی مالیت",
@@ -426,8 +425,8 @@ const translations = {
         mainTitle: "Zakat Calculator",
         nisabHeading: "⚖️ Nisab Determination",
         silverPriceLabel: "Enter today's price of one gram silver in your area (in Rupees)",
-        silverPriceHint: "Note: 1 Tola = 11.66 grams, 52.5 Tola = 612.36 grams",
-        nisabLabel: "Nisab for 52.5 Tola (612.36 grams) Silver",
+        silverPriceHint: "Note: 1 Tola = 11.66 grams, 52.5 Tola = 612.15 grams",
+        nisabLabel: "Nisab for 52.5 Tola (612.15 grams) Silver",
         nisabDetail: "(52.5 Tola)",
         assetsTitle: "Current Assets",
         goldLabel: "Gold Value",
@@ -545,16 +544,16 @@ function updateLanguage() {
     document.getElementById('englishBtn').textContent = t.englishBtn;
 }
 
-// نصاب کا حساب لگانے کا فنکشن
+// نصاب کا حساب لگانے کا فنکشن - برصغیر کے معیار کے مطابق (612.15 گرام)
 function calculateNisab() {
     const silverPricePerGram = parseFloat(document.getElementById('silverPricePerGram').value) || 0;
     
-    // ساڑھے باون تولہ = 52.5 تولہ
-    // ایک تولہ = 11.66 گرام
-    // کل گرام = 52.5 * 11.66 = 612.36 گرام
+    // برصغیر کا معیار: ایک تولہ = 11.66 گرام
     const GRAMS_IN_TOLA = 11.66;
-    const NISAB_TOLA = 52.5;
-    const totalGrams = NISAB_TOLA * GRAMS_IN_TOLA; // 612.36 گرام
+    const NISAB_TOLA = 52.5; // ساڑھے باون تولہ
+    
+    // کل گرام = 52.5 × 11.66 = 612.15 گرام
+    const totalGrams = NISAB_TOLA * GRAMS_IN_TOLA; // 612.15 گرام
     
     currentNisab = silverPricePerGram * totalGrams;
     

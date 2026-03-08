@@ -75,7 +75,7 @@ position: relative;
     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 }
 
-/* Nisab Section */
+/* Nisab Section - صرف پہلے پیج پر دکھے گا */
 .nisab-section {
     background: #f0f7ff;
     padding: 20px;
@@ -141,6 +141,65 @@ position: relative;
     color: #666;
 }
 
+/* Instruction Message */
+.instruction-message {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    border-right: 4px solid #27ae60;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+body.english-lang .instruction-message {
+    border-right: none;
+    border-left: 4px solid #27ae60;
+}
+
+/* Zakat Amount Highlight */
+.zakat-highlight {
+    background: linear-gradient(145deg, #ff6b6b, #ff4757);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.zakat-highlight .label {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.zakat-highlight .amount {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.zakat-highlight .small-text {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
 /* For English layout */
 body.english-lang .container {
     direction: ltr;
@@ -165,6 +224,11 @@ margin:8px 0;
 border-radius:5px;
 border:1px solid #ccc;
 font-size:16px;
+}
+
+input::placeholder {
+    color: #999;
+    font-size: 14px;
 }
 
 button{
@@ -226,6 +290,42 @@ font-size:14px;
 color:#777;
 }
 
+/* Details Section */
+.details-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #dee2e6;
+}
+
+.details-section h3 {
+    color: #27ae60;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #dee2e6;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.detail-value {
+    color: #27ae60;
+    font-weight: bold;
+}
+
 </style>
 
 </head>
@@ -244,7 +344,7 @@ color:#777;
     <button class="lang-btn" onclick="setLanguage('english')" id="englishBtn">English</button>
 </div>
 
-<!-- Nisab Section -->
+<!-- Nisab Section - صرف پہلے پیج پر -->
 <div class="nisab-section" id="nisabSection">
     <h3 id="nisabHeading">⚖️ نصاب کا تعین</h3>
     
@@ -261,41 +361,46 @@ color:#777;
     </div>
 </div>
 
+<!-- Instruction Message -->
+<div class="instruction-message" id="instructionMessage">
+    درج ذیل خانوں میں اپنے پاس موجود سونا، چاندی یا دیگر اشیاء کی مالیت (رقم) درج کریں
+</div>
+
 <div id="assetsSection">
 
 <h2 id="assetsTitle">موجودہ اثاثے</h2>
 
 <label id="goldLabel">سونے کی مالیت</label>
-<input type="number" id="goldValue">
+<input type="number" id="goldValue" placeholder="مثلاً: 500000">
 
 <label id="silverLabel">چاندی کی مالیت (اضافی چاندی)</label>
-<input type="number" id="silverValue">
+<input type="number" id="silverValue" placeholder="مثلاً: 100000">
 
 <label id="cashLabel">نقدی</label>
-<input type="number" id="cash">
+<input type="number" id="cash" placeholder="مثلاً: 50000">
 
 <label id="bankLabel">بینک بیلنس</label>
-<input type="number" id="bankBalance">
+<input type="number" id="bankBalance" placeholder="مثلاً: 200000">
 
 <label id="loansGivenLabel">ادھار دی گئی رقم</label>
-<input type="number" id="loansGiven">
+<input type="number" id="loansGiven" placeholder="مثلاً: 30000">
 
 <label id="insuranceLabel">انشورنس پالیسی</label>
-<input type="number" id="insurance">
+<input type="number" id="insurance" placeholder="مثلاً: 100000">
 
 <label id="foreignCurrencyLabel">غیر ملکی کرنسی / شیئرز</label>
-<input type="number" id="foreignCurrency">
+<input type="number" id="foreignCurrency" placeholder="مثلاً: 50000">
 
 <label id="tradeStockLabel">سامان تجارت</label>
-<input type="number" id="tradeStock">
+<input type="number" id="tradeStock" placeholder="مثلاً: 200000">
 
 <label id="propertyLabel">بیچنے کی نیت سے خریدی گئی جائیداد</label>
-<input type="number" id="property">
+<input type="number" id="property" placeholder="مثلاً: 500000">
 
 <label id="otherAssetsLabel">دیگر زائد اموال</label>
-<input type="number" id="otherAssets">
+<input type="number" id="otherAssets" placeholder="مثلاً: 25000">
 
-<button onclick="showLiabilities()" id="nextBtn">اگلا</button>
+<button onclick="showLiabilities()" id="nextBtn">اگلے صفحے پر جائیں ➡️</button>
 
 </div>
 
@@ -305,37 +410,37 @@ color:#777;
 <h2 id="liabilitiesTitle">قرضے اور اخراجات</h2>
 
 <label id="loansTakenLabel">قرضہ</label>
-<input type="number" id="loansTaken">
+<input type="number" id="loansTaken" placeholder="مثلاً: 100000">
 
 <label id="mehrLabel">غیر ادا شدہ مہر</label>
-<input type="number" id="mehr">
+<input type="number" id="mehr" placeholder="مثلاً: 50000">
 
 <label id="electricityLabel">بجلی بل</label>
-<input type="number" id="electricityBill">
+<input type="number" id="electricityBill" placeholder="مثلاً: 5000">
 
 <label id="gasLabel">گیس بل</label>
-<input type="number" id="gasBill">
+<input type="number" id="gasBill" placeholder="مثلاً: 2000">
 
 <label id="waterLabel">پانی بل</label>
-<input type="number" id="waterBill">
+<input type="number" id="waterBill" placeholder="مثلاً: 1000">
 
 <label id="phoneLabel">فون بل</label>
-<input type="number" id="phoneBill">
+<input type="number" id="phoneBill" placeholder="مثلاً: 2000">
 
 <label id="rentHouseLabel">مکان کرایہ</label>
-<input type="number" id="rentHouse">
+<input type="number" id="rentHouse" placeholder="مثلاً: 15000">
 
 <label id="rentShopLabel">دکان کرایہ</label>
-<input type="number" id="rentShop">
+<input type="number" id="rentShop" placeholder="مثلاً: 20000">
 
 <label id="rentWarehouseLabel">گودام کرایہ</label>
-<input type="number" id="rentWarehouse">
+<input type="number" id="rentWarehouse" placeholder="مثلاً: 10000">
 
 <label id="salariesLabel">تنخواہیں</label>
-<input type="number" id="salaries">
+<input type="number" id="salaries" placeholder="مثلاً: 50000">
 
 <label id="otherLiabilitiesLabel">دیگر اخراجات</label>
-<input type="number" id="otherLiabilities">
+<input type="number" id="otherLiabilities" placeholder="مثلاً: 10000">
 
 <button onclick="calculateZakat()" id="calculateBtn">زکوٰۃ کا حساب لگائیں</button>
 
@@ -346,10 +451,6 @@ color:#777;
 
 
 <div id="feedback" class="hidden">
-
-<button onclick="shareResult()" id="shareBtn">WhatsApp پر شیئر کریں</button>
-
-<button onclick="downloadPDF()" id="pdfBtn">PDF رپورٹ ڈاؤنلوڈ کریں</button>
 
 <!-- Contact Message -->
 <div class="contact-message" id="contactMessage">
@@ -386,6 +487,7 @@ const translations = {
         silverPriceHint: "نوٹ: ایک تولہ = 11.66 گرام، ساڑھے باون تولہ = 612.15 گرام",
         nisabLabel: "ساڑھے باون تولہ (612.15 گرام) چاندی کا نصاب",
         nisabDetail: "(ساڑھے باون تولہ = 52.5 تولہ)",
+        instructionMessage: "درج ذیل خانوں میں اپنے پاس موجود سونا، چاندی یا دیگر اشیاء کی مالیت (رقم) درج کریں",
         assetsTitle: "موجودہ اثاثے",
         goldLabel: "سونے کی مالیت",
         silverLabel: "چاندی کی مالیت (اضافی چاندی)",
@@ -397,7 +499,7 @@ const translations = {
         tradeStockLabel: "سامان تجارت",
         propertyLabel: "بیچنے کی نیت سے خریدی گئی جائیداد",
         otherAssetsLabel: "دیگر زائد اموال",
-        nextBtn: "اگلا",
+        nextBtn: "اگلے صفحے پر جائیں ➡️",
         liabilitiesTitle: "قرضے اور اخراجات",
         loansTakenLabel: "قرضہ",
         mehrLabel: "غیر ادا شدہ مہر",
@@ -419,7 +521,16 @@ const translations = {
         homeBtn: "واپس جائیں",
         footerText: "النصیحہ اکیڈمی",
         urduBtn: "اردو",
-        englishBtn: "English"
+        englishBtn: "English",
+        zakatHighlight: "آپ پر واجب زکوٰۃ",
+        detailsHeading: "تفصیلات",
+        totalAssets: "کل اثاثے",
+        totalLiabilities: "کل قرضے",
+        netWorth: "کل مالیت",
+        todayNisab: "آج کا نصاب",
+        notSahibENisab: "آپ صاحب نصاب نہیں ہیں",
+        amountNeeded: "نصاب تک پہنچنے کے لیے مزید درکار",
+        rupees: "روپے"
     },
     english: {
         mainTitle: "Zakat Calculator",
@@ -428,6 +539,7 @@ const translations = {
         silverPriceHint: "Note: 1 Tola = 11.66 grams, 52.5 Tola = 612.15 grams",
         nisabLabel: "Nisab for 52.5 Tola (612.15 grams) Silver",
         nisabDetail: "(52.5 Tola)",
+        instructionMessage: "Enter the value (amount) of your gold, silver and other assets in the fields below",
         assetsTitle: "Current Assets",
         goldLabel: "Gold Value",
         silverLabel: "Silver Value (additional silver)",
@@ -439,7 +551,7 @@ const translations = {
         tradeStockLabel: "Trade Stock",
         propertyLabel: "Property for Sale",
         otherAssetsLabel: "Other Assets",
-        nextBtn: "Next",
+        nextBtn: "Go to Next Page ➡️",
         liabilitiesTitle: "Liabilities & Expenses",
         loansTakenLabel: "Loans Taken",
         mehrLabel: "Unpaid Mehr",
@@ -461,7 +573,16 @@ const translations = {
         homeBtn: "Back to Home",
         footerText: "Al Naseeha Academy",
         urduBtn: "اردو",
-        englishBtn: "English"
+        englishBtn: "English",
+        zakatHighlight: "Zakat Due on You",
+        detailsHeading: "Details",
+        totalAssets: "Total Assets",
+        totalLiabilities: "Total Liabilities",
+        netWorth: "Net Worth",
+        todayNisab: "Today's Nisab",
+        notSahibENisab: "You are not Sahib-e-Nisab",
+        amountNeeded: "Amount needed to reach Nisab",
+        rupees: "Rupees"
     }
 };
 
@@ -473,9 +594,57 @@ function setLanguage(lang) {
     if (lang === 'english') {
         document.body.classList.add('english-lang');
         document.documentElement.lang = 'en';
+        
+        // English placeholders
+        document.getElementById('silverPricePerGram').placeholder = "e.g., 85";
+        document.getElementById('goldValue').placeholder = "e.g., 500000";
+        document.getElementById('silverValue').placeholder = "e.g., 100000";
+        document.getElementById('cash').placeholder = "e.g., 50000";
+        document.getElementById('bankBalance').placeholder = "e.g., 200000";
+        document.getElementById('loansGiven').placeholder = "e.g., 30000";
+        document.getElementById('insurance').placeholder = "e.g., 100000";
+        document.getElementById('foreignCurrency').placeholder = "e.g., 50000";
+        document.getElementById('tradeStock').placeholder = "e.g., 200000";
+        document.getElementById('property').placeholder = "e.g., 500000";
+        document.getElementById('otherAssets').placeholder = "e.g., 25000";
+        document.getElementById('loansTaken').placeholder = "e.g., 100000";
+        document.getElementById('mehr').placeholder = "e.g., 50000";
+        document.getElementById('electricityBill').placeholder = "e.g., 5000";
+        document.getElementById('gasBill').placeholder = "e.g., 2000";
+        document.getElementById('waterBill').placeholder = "e.g., 1000";
+        document.getElementById('phoneBill').placeholder = "e.g., 2000";
+        document.getElementById('rentHouse').placeholder = "e.g., 15000";
+        document.getElementById('rentShop').placeholder = "e.g., 20000";
+        document.getElementById('rentWarehouse').placeholder = "e.g., 10000";
+        document.getElementById('salaries').placeholder = "e.g., 50000";
+        document.getElementById('otherLiabilities').placeholder = "e.g., 10000";
     } else {
         document.body.classList.remove('english-lang');
         document.documentElement.lang = 'ur';
+        
+        // Urdu placeholders
+        document.getElementById('silverPricePerGram').placeholder = "مثلاً: 85";
+        document.getElementById('goldValue').placeholder = "مثلاً: 500000";
+        document.getElementById('silverValue').placeholder = "مثلاً: 100000";
+        document.getElementById('cash').placeholder = "مثلاً: 50000";
+        document.getElementById('bankBalance').placeholder = "مثلاً: 200000";
+        document.getElementById('loansGiven').placeholder = "مثلاً: 30000";
+        document.getElementById('insurance').placeholder = "مثلاً: 100000";
+        document.getElementById('foreignCurrency').placeholder = "مثلاً: 50000";
+        document.getElementById('tradeStock').placeholder = "مثلاً: 200000";
+        document.getElementById('property').placeholder = "مثلاً: 500000";
+        document.getElementById('otherAssets').placeholder = "مثلاً: 25000";
+        document.getElementById('loansTaken').placeholder = "مثلاً: 100000";
+        document.getElementById('mehr').placeholder = "مثلاً: 50000";
+        document.getElementById('electricityBill').placeholder = "مثلاً: 5000";
+        document.getElementById('gasBill').placeholder = "مثلاً: 2000";
+        document.getElementById('waterBill').placeholder = "مثلاً: 1000";
+        document.getElementById('phoneBill').placeholder = "مثلاً: 2000";
+        document.getElementById('rentHouse').placeholder = "مثلاً: 15000";
+        document.getElementById('rentShop').placeholder = "مثلاً: 20000";
+        document.getElementById('rentWarehouse').placeholder = "مثلاً: 10000";
+        document.getElementById('salaries').placeholder = "مثلاً: 50000";
+        document.getElementById('otherLiabilities').placeholder = "مثلاً: 10000";
     }
     updateLanguage();
     updateActiveButton();
@@ -504,6 +673,7 @@ function updateLanguage() {
     document.getElementById('silverPriceHint').textContent = t.silverPriceHint;
     document.getElementById('nisabLabel').textContent = t.nisabLabel;
     document.getElementById('nisabDetail').textContent = t.nisabDetail;
+    document.getElementById('instructionMessage').textContent = t.instructionMessage;
     document.getElementById('assetsTitle').textContent = t.assetsTitle;
     document.getElementById('goldLabel').textContent = t.goldLabel;
     document.getElementById('silverLabel').textContent = t.silverLabel;
@@ -531,8 +701,6 @@ function updateLanguage() {
     document.getElementById('otherLiabilitiesLabel').textContent = t.otherLiabilitiesLabel;
     document.getElementById('calculateBtn').textContent = t.calculateBtn;
     
-    document.getElementById('shareBtn').textContent = t.shareBtn;
-    document.getElementById('pdfBtn').textContent = t.pdfBtn;
     document.getElementById('contactMessage').textContent = t.contactMessage;
     document.getElementById('callBtn').innerHTML = t.callBtn;
     document.getElementById('whatsappBtn').innerHTML = t.whatsappBtn;
@@ -558,7 +726,7 @@ function calculateNisab() {
     currentNisab = silverPricePerGram * totalGrams;
     
     // نتیجہ دکھائیں
-    document.getElementById('nisabValue').innerHTML = currentNisab.toLocaleString() + ' روپے';
+    document.getElementById('nisabValue').innerHTML = currentNisab.toLocaleString() + ' ' + (currentLang === 'urdu' ? 'روپے' : 'Rupees');
     
     return currentNisab;
 }
@@ -584,130 +752,112 @@ localStorage.setItem(input.id,input.value);
 });
 
 function showLiabilities(){
-
-document.getElementById("assetsSection").classList.add("hidden");
-document.getElementById("liabilitiesSection").classList.remove("hidden");
-
-window.scrollTo({top:0,behavior:'smooth'});
-
+    document.getElementById("nisabSection").classList.add("hidden");
+    document.getElementById("instructionMessage").classList.add("hidden");
+    document.getElementById("assetsSection").classList.add("hidden");
+    document.getElementById("liabilitiesSection").classList.remove("hidden");
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function calculateZakat(){
-
-// پہلے چیک کریں کہ چاندی کی قیمت ڈالی گئی ہے یا نہیں
-if (!document.getElementById('silverPricePerGram').value) {
-    alert(currentLang === 'urdu' ? 
-          'براہ کرم پہلے چاندی کی قیمت درج کریں' : 
-          'Please enter silver price first');
-    return;
-}
-
-// نصاب کا حساب لگائیں (تازہ ترین)
-let nisab = calculateNisab();
-
-let totalAssets=assets.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
-
-let totalLiabilities=liabilities.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
-
-let net=totalAssets-totalLiabilities;
-
-let zakat=net*0.025;
-
-let text="";
-
-if(net>=nisab){
-    if(currentLang === 'urdu') {
-        text=`آج کا نصاب: ${nisab.toLocaleString()} روپے
-        
-کل اثاثے: ${totalAssets.toLocaleString()} روپے
-
-کل قرضے: ${totalLiabilities.toLocaleString()} روپے
-
-قابلِ زکوٰۃ مال:
-${net.toLocaleString()} روپے
-
-واجب زکوٰۃ (2.5%):
-${zakat.toLocaleString()} روپے`;
-    } else {
-        text=`Today's Nisab: Rs. ${nisab.toLocaleString()}
-
-Total Assets: Rs. ${totalAssets.toLocaleString()}
-
-Total Liabilities: Rs. ${totalLiabilities.toLocaleString()}
-
-Zakatable Amount:
-Rs. ${net.toLocaleString()}
-
-Zakat Due (2.5%):
-Rs. ${zakat.toLocaleString()}`;
+    // پہلے چیک کریں کہ چاندی کی قیمت ڈالی گئی ہے یا نہیں
+    if (!document.getElementById('silverPricePerGram').value) {
+        alert(currentLang === 'urdu' ? 
+              'براہ کرم پہلے چاندی کی قیمت درج کریں' : 
+              'Please enter silver price first');
+        return;
     }
-}else{
-    let remain=nisab-net;
-    if(currentLang === 'urdu') {
-        text=`آپ صاحب نصاب نہیں ہیں
 
-آج کا نصاب: ${nisab.toLocaleString()} روپے
-آپ کی کل مالیت: ${net.toLocaleString()} روپے
-
-نصاب تک پہنچنے کیلئے مزید
-${remain.toLocaleString()} روپے درکار ہیں`;
+    // نصاب کا حساب لگائیں (تازہ ترین)
+    let nisab = calculateNisab();
+    let totalAssets=assets.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
+    let totalLiabilities=liabilities.reduce((s,id)=>s+(parseFloat(document.getElementById(id).value)||0),0);
+    let net = totalAssets - totalLiabilities;
+    let zakat = net * 0.025;
+    
+    const t = translations[currentLang];
+    
+    let resultHTML = '';
+    
+    if(net >= nisab){
+        // ہائی لائٹ والا زکوٰۃ کا خانہ
+        resultHTML = `
+            <div class="zakat-highlight">
+                <div class="label">✨ ${t.zakatHighlight} ✨</div>
+                <div class="amount">${zakat.toLocaleString()} ${t.rupees}</div>
+                <div class="small-text">(2.5% of your wealth)</div>
+            </div>
+            
+            <div class="details-section">
+                <h3>📊 ${t.detailsHeading}</h3>
+                <div class="detail-item">
+                    <span class="detail-label">${t.todayNisab}:</span>
+                    <span class="detail-value">${nisab.toLocaleString()} ${t.rupees}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">${t.totalAssets}:</span>
+                    <span class="detail-value">${totalAssets.toLocaleString()} ${t.rupees}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">${t.totalLiabilities}:</span>
+                    <span class="detail-value">${totalLiabilities.toLocaleString()} ${t.rupees}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">${t.netWorth}:</span>
+                    <span class="detail-value">${net.toLocaleString()} ${t.rupees}</span>
+                </div>
+            </div>
+        `;
     } else {
-        text=`You are not Sahib-e-Nisab
-
-Today's Nisab: Rs. ${nisab.toLocaleString()}
-Your Net Worth: Rs. ${net.toLocaleString()}
-
-Amount needed to reach Nisab:
-Rs. ${remain.toLocaleString()}`;
+        let remain = nisab - net;
+        resultHTML = `
+            <div class="details-section">
+                <h3>⚠️ ${t.notSahibENisab}</h3>
+                <div class="detail-item">
+                    <span class="detail-label">${t.todayNisab}:</span>
+                    <span class="detail-value">${nisab.toLocaleString()} ${t.rupees}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">${t.netWorth}:</span>
+                    <span class="detail-value">${net.toLocaleString()} ${t.rupees}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">${t.amountNeeded}:</span>
+                    <span class="detail-value" style="color: #ff4757;">${remain.toLocaleString()} ${t.rupees}</span>
+                </div>
+            </div>
+        `;
     }
-}
-
-document.getElementById("result").innerText=text;
-
-document.getElementById("liabilitiesSection").classList.add("hidden");
-
-document.getElementById("result").classList.remove("hidden");
-
-document.getElementById("feedback").classList.remove("hidden");
-
+    
+    document.getElementById("result").innerHTML = resultHTML;
+    document.getElementById("liabilitiesSection").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("feedback").classList.remove("hidden");
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function shareResult(){
-
-let text=document.getElementById("result").innerText;
-
-let url="https://wa.me/?text="+encodeURIComponent(text);
-
-window.open(url);
-
+    let text = document.getElementById("result").innerText;
+    let url = "https://wa.me/?text=" + encodeURIComponent(text);
+    window.open(url);
 }
 
 function downloadPDF(){
-
-let content=document.getElementById("result").innerText;
-
-let win=window.open("","","width=600,height=600");
-
-win.document.write("<h2>Zakat Report</h2>");
-
-win.document.write("<pre>"+content+"</pre>");
-
-win.print();
-
+    let content = document.getElementById("result").innerText;
+    let win = window.open("","","width=600,height=600");
+    win.document.write("<h2>Zakat Report</h2>");
+    win.document.write("<pre>"+content+"</pre>");
+    win.print();
 }
 
 function goHome(){
-
-document.getElementById("assetsSection").classList.remove("hidden");
-
-document.getElementById("liabilitiesSection").classList.add("hidden");
-
-document.getElementById("result").classList.add("hidden");
-
-document.getElementById("feedback").classList.add("hidden");
-
-window.scrollTo({top:0,behavior:'smooth'});
-
+    document.getElementById("nisabSection").classList.remove("hidden");
+    document.getElementById("instructionMessage").classList.remove("hidden");
+    document.getElementById("assetsSection").classList.remove("hidden");
+    document.getElementById("liabilitiesSection").classList.add("hidden");
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("feedback").classList.add("hidden");
+    window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // Initialize active button
